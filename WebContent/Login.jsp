@@ -4,9 +4,36 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
+	<script>
+			function validateForm() {
+			    var x = document.forms["userForm"]["userName"].value;
+			    var y = document.forms["userForm"]["password"].value;
+			    if (x == "") {
+			        alert("Username must be filled out");
+			        return false;
+			    }
+			    
+			    if (y == "") {
+			        alert("Password must be filled out");
+			        return false;
+			    }
+			}
+	   </script>
 </head>
 <body>
-
+	<h2> Login here</h2>
+		
+		<form name="userForm" action	=Login
+		      onsubmit="return validateForm()" method="post">
+		
+			User Name: <input type=text name=userName><br>
+			Password: <input type=password name=password><br>
+			<input type=submit value=Login> <br>  		
+		</form>
+		
+		<br>
+		<br>
+		<a href="Register.jsp"> Are you a New User? </a> <br>
 </body>
 </html>
