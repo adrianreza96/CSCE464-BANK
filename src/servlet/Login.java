@@ -32,53 +32,21 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		response.sendRedirect("HomePage.jsp"); 
-		/* The users.properties file is stored in the "WEB-INF" folder.
-		   To access this file, you will need its absolute path. */
+		//response.sendRedirect("HomePage.jsp"); 
 		
-		/*
-		 * Note: the content of the properties file may not be visible
-		 */
-		 
-		/* Following two statements are used to obtain the absolute path 
-		   of the users.properties file from its relative path. */
-//		ServletContext sc = this.getServletContext();
-//		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-//		Users login = new Users(userName, password);
-//		Properties p = new Properties();
-//		
-//		FileInputStream fis = null;
-		// Link-redirection
-
-//		try {
-//			fis = new FileInputStream(propFilePath);
-//			
-//			p.load(fis);
-//			
-//			if(!login.validateUser(login, propFilePath)) {
-//				response.sendRedirect("Register.jsp");
-//			} else { // Check whether the password matches or not
-//				String pword = p.getProperty(userName);  
-//				if(!pword.equals(password)) {
-//					response.sendRedirect("Register.jsp"); // Link-redirection
-//				} else {
-//					response.sendRedirect("HomePage.jsp"); // Link-redirection
-//				}
-//			}
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			if(fis != null) {
-//				fis.close();
-//			}
-//		}
+		ServletContext sc = this.getServletContext();
+		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
 		
-		/*
-		 * Instead using servlet methods (above) for user login,
-		 * instantiate a Users object and 
-		 * use appropriate method for user login from the Users class.
-		 */
+		Users u = new Users(userName, password);
+		System.out.println("Login Start");
+		if(!Users.validateUser(u, propFilePath)) {
+			response.sendRedirect("Register.jsp");
+			System.out.println("Needs to Register");
+		} else {
+			response.sendRedirect("HomePage.jsp");
+			System.out.println("Logging in...");
+		}
+		System.out.println("Login End");
 	}
 
 	/**

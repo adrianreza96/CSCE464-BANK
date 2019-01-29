@@ -62,37 +62,39 @@ public class Users {
 		}
 	}
 	
-	public boolean validateUser(Users aUser, String propFilePath) {
+	public static boolean validateUser(Users u, String path) {
 		Properties p = new Properties();
 		FileInputStream fis = null;
-		
 		try {
-			fis = new FileInputStream(propFilePath);
+			
+			fis = new FileInputStream(path);
+			
 			p.load(fis);
-			p.getProperty(aUser.userName);
-			if(p.getProperty(aUser.userName) != null) {
-				return true;
+				
+			// Check whether the user name exists or not
+			if(!p.containsKey(u.getUserName())) {	
+				return false;
+			} else {
+				String pword = p.getProperty(u.getUserName());  
+				if(!pword.equals(u.getPassword())) {
+					return false;
+				} else {
+					return true;
+				}
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(fis!=null) {
+			if(fis != null) {
 				try {
 					fis.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
-		
 		return false;
 	}
-	// validateUser
 	// removeUser
 	
 	
