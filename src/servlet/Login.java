@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import model.Users;
 /**
  * Servlet implementation class Login
  */
+@WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +34,6 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		//response.sendRedirect("HomePage.jsp"); 
 		
 		ServletContext sc = this.getServletContext();
 		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
@@ -41,12 +42,9 @@ public class Login extends HttpServlet {
 		System.out.println("Login Start");
 		if(!Users.validateUser(u, propFilePath)) {
 			response.sendRedirect("Register.jsp");
-			System.out.println("Needs to Register");
 		} else {
-			response.sendRedirect("HomePage.jsp");
-			System.out.println("Logging in...");
+			response.sendRedirect("CustomerHomePage.jsp");
 		}
-		System.out.println("Login End");
 	}
 
 	/**
