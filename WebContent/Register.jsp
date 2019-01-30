@@ -6,12 +6,19 @@
 <meta charset="ISO-8859-1">
 <title>Registration</title>
 </head>
+	<style>
+		input[type=submit] {
+		    width: 20em;  height: 2em;
+		    background-color: cornsilk;
+		}
+		* {
+		 	font-family: Arial;
+		} 
+		body {
+		 	background-color: lightblue;
+		}
+	</style>
 	<body>
-		<style>
-			input[type=submit] {
-			    width: 20em;  height: 8em;
-			}
-		</style>
 		<h1 style="text-align:center"> Register here</h1>
 		<script> 
 			function validateForm(){

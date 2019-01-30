@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Transactions</title>
 </head>
-<body>
-
-</body>
+	<style>
+		input[type=submit] {
+		    width: 20em;  height: 2em;
+		    background-color: cornsilk;
+		}
+		* {
+		 	font-family: Arial;
+		} 
+		body {
+		 	background-color: lightblue;
+		}
+	</style>
+	<body>
+	
+	</body>
 </html>

@@ -4,11 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Shopping Cart</title>
 </head>
 	<style>
 		input[type=submit] {
-		    width: 20em;  height: 8em;
+		    width: 20em;  height: 2em;
+		    background-color: cornsilk;
+		}
+		* {
+		 	font-family: Arial;
+		} 
+		body {
+		 	background-color: lightblue;
 		}
 	</style>
 	<body>
@@ -76,7 +83,7 @@
 				</td>
 			</tr>
 		</table>
-		<form style = "text-align:center" action="CustomerTransaction.jsp">
+		<form style = "text-align:center" action="CustomerTransactions.jsp">
 			<input type=submit value="Checkout">
 		</form>
 	</body>

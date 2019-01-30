@@ -25,7 +25,14 @@
 </head>
 	<style>
 		input[type=submit] {
-		    width: 20em;  height: 8em;
+		    width: 20em;  height: 2em;
+		    background-color: cornsilk;
+		}
+		* {
+		 	font-family: Arial;
+		} 
+		body {
+		 	background-color: lightblue;
 		}
 	</style>
 	<body>
