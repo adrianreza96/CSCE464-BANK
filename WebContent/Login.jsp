@@ -21,20 +21,29 @@
 			    }
 			    console.log("hello2");
 			}
-	   </script>
+	</script>
 </head>
-<body>
-	<h2> Login here</h2>
-		
-		<form name="userForm" action=Login onsubmit="return validateForm()" method="post">
+	<style>
+		input[type=submit] {
+		    width: 20em;  height: 8em;
+		}
+	</style>
+	<body>
+		<h2 style="text-align:center"> Login here</h2>
+			
+		<form style="text-align:center" name="userForm" action=Login onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
-			Password: <input type=password name=password><br>
+			Password:  <input type=password name=password><br>
 			<input type=submit value=Login> <br>  		
 		</form>
 		
 		<br>
 		<br>
-		<a href="Register.jsp"> Are you a New User? </a> <br>
-</body>
+		
+		<form style="text-align:center" action="Register.jsp">
+			<input type=submit value="Are you a New User">
+		</form>
+	
+	</body>
 </html>

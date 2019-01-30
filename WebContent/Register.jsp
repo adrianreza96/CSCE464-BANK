@@ -6,10 +6,13 @@
 <meta charset="ISO-8859-1">
 <title>Registration</title>
 </head>
-<body>
-	
-		<h1> A Simple MVC Web Application</h1>
-		<h2> Register here</h2>
+	<body>
+		<style>
+			input[type=submit] {
+			    width: 20em;  height: 8em;
+			}
+		</style>
+		<h1 style="text-align:center"> Register here</h1>
 		<script> 
 			function validateForm(){
 				var x = document.forms["form"]["userName"].value;
@@ -24,7 +27,7 @@
 				}
 			}
 		</script>
-		<form name="form" onsubmit="return validateForm()" action=Register method="post">
+		<form style="text-align:center" name="form" onsubmit="return validateForm()" action=Register method="post">
 		
 			User Name: <input type=text name=userName><br>
 			Password: <input type=password name=password><br>
@@ -35,8 +38,9 @@
 		<br>
 		<br>
 		
-		<!-- Navigation links --> 
-		<a href="Login.jsp"> Home Page </a> <br>
+		<form style="text-align:center" action="Login.jsp">
+			<input type=submit value="Return to Login">
+		</form>
 		
 	
 	</body>
