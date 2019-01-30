@@ -6,33 +6,13 @@
 <meta charset="UTF-8">
 <title>Shopping Cart</title>
 </head>
-	<style>
-		input[type=submit] {
-		    width: 20em;  height: 2em;
-		    background-color: cornsilk;
-		}
-		* {
-		 	font-family: Arial;
-		} 
-		body {
-		 	background-color: lightblue;
-		}
-	</style>
 	<body>
-		<table>
-			<tr>
-				<td>
-					<form action="CustomerHomePage.jsp">
-						<input type=submit value="Home">
-					</form>
-				</td>
-				<td>
-					<form action="Login.jsp">
-						<input type=submit value="Logout">
-					</form>
-				</td>
-			</tr>
-		</table>
+		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
+		<div class="topnav">
+		  <a class="active" href="CustomerHomePage.jsp">Home</a>
+		  <a href="ViewOrders.jsp">Orders</a>
+		  <a href="Login.jsp" style="float:right">Log Out</a>
+		</div>
 		<h1 style="text-align:center">Shopping Cart</h1>
 		<br>
 		<br>
@@ -83,7 +63,7 @@
 				</td>
 			</tr>
 		</table>
-		<form style = "text-align:center" action="CustomerTransactions.jsp">
+		<form style = "text-align:center" action="CustomerTransaction.jsp">
 			<input type=submit value="Checkout">
 		</form>
 	</body>

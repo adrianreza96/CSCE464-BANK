@@ -23,25 +23,19 @@
 			}
 	</script>
 </head>
-	<style>
-		input[type=submit] {
-		    width: 20em;  height: 2em;
-		    background-color: cornsilk;
-		}
-		* {
-		 	font-family: Arial;
-		} 
-		body {
-		 	background-color: lightblue;
-		}
-	</style>
 	<body>
-		<h2 style="text-align:center"> Login here</h2>
+		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
+		<div class="topnav">
+			<h1></h1>
+		</div>
+		<h2 style="text-align:center"> Login </h2>
 			
 		<form style="text-align:center" name="userForm" action=Login onsubmit="return validateForm()" method="post">
 		
 			User Name: <input type=text name=userName><br>
+			<br>
 			Password:  <input type=password name=password><br>
+			<br>
 			<input type=submit value=Login> <br>  		
 		</form>
 		
@@ -49,7 +43,7 @@
 		<br>
 		
 		<form style="text-align:center" action="Register.jsp">
-			<input type=submit value="Are you a New User">
+			<input type=submit value="Register An Account">
 		</form>
 	
 	</body>

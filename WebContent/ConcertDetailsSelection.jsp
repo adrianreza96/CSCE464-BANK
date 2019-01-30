@@ -27,28 +27,25 @@
 		}
 	</style>
 	<body>
+		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
+		<div class="topnav">
+		  <a class="active" href="CustomerHomePage.jsp">Home</a>
+		  <a href="ViewOrders.jsp">Orders</a>
+		  <a href="Login.jsp" style="float:right">Log Out</a>
+		</div>
 		<table>
 			<tr>
-				<td>
-					<form action="ViewAndCheckoutShoppingCart.jsp">
-						<input type=submit value="Add to Cart">
-					</form>
-				</td>
 				<td>
 					<form action="ConcertSearchResults.jsp">
 						<input type=submit value="Back">
 					</form>
 				</td>
 				<td>
-					<form action="CustomerHomePage.jsp">
-						<input type=submit value="home">
+					<form action="ViewAndCheckoutShoppingCart.jsp">
+						<input type=submit value="Add to Cart">
 					</form>
 				</td>
-				<td>
-					<form action="Login.jsp">
-						<input type=submit value="Logout">
-					</form>
-				</td>
+				
 			</tr>
 		</table>
 		

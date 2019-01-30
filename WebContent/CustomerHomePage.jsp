@@ -6,33 +6,13 @@
 <meta charset="ISO-8859-1">
 <title>User HomePage</title>
 </head>
-	<style>
-		input[type=submit] {
-		    width: 20em;  height: 2em;
-		    background-color: cornsilk;
-		}
-		* {
-		 	font-family: Arial;
-		} 
-		body {
-		 	background-color: lightblue;
-		}
-	</style>
 	<body>
-		<table>
-			<tr>
-				<td>
-					<form action="ViewOrders.jsp">
-						<input type=submit value="View Orders">
-					</form>
-				</td>
-				<td>
-					<form action="Login.jsp">
-						<input type=submit value="Logout">
-					</form>
-				</td>
-			</tr>
-		</table>
+		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
+		<div class="topnav">
+		  <a class="active" href="CustomerHomePage.jsp">Home</a>
+		  <a href="ViewOrders.jsp">Orders</a>
+		  <a href="Login.jsp" style="float:right">Log Out</a>
+		</div>
 		
 		<h1 style="text-align:center">Customer Home Page</h1>
 		

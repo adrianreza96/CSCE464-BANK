@@ -6,20 +6,14 @@
 <meta charset="ISO-8859-1">
 <title>Registration</title>
 </head>
-	<style>
-		input[type=submit] {
-		    width: 20em;  height: 2em;
-		    background-color: cornsilk;
-		}
-		* {
-		 	font-family: Arial;
-		} 
-		body {
-		 	background-color: lightblue;
-		}
-	</style>
+	
 	<body>
-		<h1 style="text-align:center"> Register here</h1>
+		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
+		
+		<div class="topnav">
+		  <a href="Login.jsp" style="float:right">Log In</a>
+		</div>
+		<h1 style="text-align:center"> Registration </h1>
 		<script> 
 			function validateForm(){
 				var x = document.forms["form"]["userName"].value;
@@ -37,12 +31,13 @@
 		<form style="text-align:center" name="form" onsubmit="return validateForm()" action=Register method="post">
 		
 			User Name: <input type=text name=userName><br>
+			<br>
 			Password: <input type=password name=password><br>
+			<br>
 			<input type=submit value=Register> <br> 
 		
 		</form>
 		
-		<br>
 		<br>
 		
 		<form style="text-align:center" action="Login.jsp">
