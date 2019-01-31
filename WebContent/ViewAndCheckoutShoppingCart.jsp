@@ -62,7 +62,20 @@
 					</form>
 				</td>
 			</tr>
+			<tr>
+				<td style="text-align:center"></td>
+				<td style="text-align:center"></td>
+				<td style="text-align:center"></td>
+				<td style="text-align:center"></td>
+				<td style="text-align:center"></td>
+				<td style="text-align:center">Total Cost:</td>
+				<td style="text-align:center">=</td>
+				<td style="text-align:center">$780.00</td>
+				<td style="text-align:center"></td>
+			</tr>
 		</table>
+		<br>
+		<br>
 		<form style = "text-align:center" action="CustomerTransaction.jsp">
 			<input type=submit value="Checkout">
 		</form>

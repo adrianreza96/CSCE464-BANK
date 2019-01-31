@@ -27,7 +27,7 @@
 		  	<tr>
 		  		<td style="text-align:center"><form action="ConcertDetailsSelection.jsp"><input type=submit value="Details"></form></td>
 			    <td style="text-align:center">The Bourbon Theater</td>
-			    <td style="text-align:center">7:00pm</td> 
+			    <td style="text-align:center">7:00pm March 12th, 2019</td> 
 			    <td style="text-align:center">14</td>
 			    <td style="text-align:center">$40.00</td>
 			    <td style="text-align:center">Kyd the Band</td>
@@ -36,7 +36,7 @@
 		  	<tr>
 			  	<td style="text-align:center"><form action="ConcertDetailsSelection.jsp"><input type=submit value="Details"></form></td>
 			    <td style="text-align:center">Pinnacle Bank Arena</td>
-			    <td style="text-align:center">9:00pm</td> 
+			    <td style="text-align:center">9:00pm March 28th, 2019</td> 
 			    <td style="text-align:center">240</td>
 			    <td style="text-align:center">$65.00</td>
 			    <td style="text-align:center">Kyle</td>
@@ -45,7 +45,7 @@
 		  	<tr>
 		  		<td style="text-align:center"><form action="ConcertDetailsSelection.jsp"><input type=submit value="Details"></form></td>
 			    <td style="text-align:center">Pinnacle Bank Arena</td>
-			    <td style="text-align:center">6:00pm</td> 
+			    <td style="text-align:center">6:00pm April 2nd, 2019</td> 
 			    <td style="text-align:center">300</td>
 			    <td style="text-align:center">$50.00</td>
 			    <td style="text-align:center">All American Rejects</td>
@@ -54,7 +54,7 @@
 		  	<tr>
 		  		<td style="text-align:center"><form action="ConcertDetailsSelection.jsp"><input type=submit value="Details"></form></td>
 			    <td style="text-align:center">The Rococo Theater</td>
-			    <td style="text-align:center">9:00pm</td> 
+			    <td style="text-align:center">9:00pm May 11th, 2019</td> 
 			    <td style="text-align:center">30</td>
 			    <td style="text-align:center">$40.00</td>
 			    <td style="text-align:center">Betty Who</td>

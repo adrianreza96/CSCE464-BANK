@@ -63,35 +63,57 @@
 						First Name: <input type=text name=userName style="margin:10px" placeholder="John"><br>
 						Last Name: <input type=text name=userName style="margin:10px" placeholder="Doe"><br>
 						<table>
-							<tr>Expiry Date : </tr>
+							<tr>Card Type : </tr>
 							<tr>
-								<select name='expireMM' id='expireMM' style="margin:10px">
-								    <option value=''>Month</option>
-								    <option value='01'>January</option>
-								    <option value='02'>February</option>
-								    <option value='03'>March</option>
-								    <option value='04'>April</option>
-								    <option value='05'>May</option>
-								    <option value='06'>June</option>
-								    <option value='07'>July</option>
-								    <option value='08'>August</option>
-								    <option value='09'>September</option>
-								    <option value='10'>October</option>
-								    <option value='11'>November</option>
-								    <option value='12'>December</option>
-								</select>
+									<select name='card' id='card'>
+									    <option value=''>Card</option>
+									    <option value='Visa'>Visa</option>
+									    <option value='Mastercard'>MasterCard</option>
+									    <option value='Discover'>Discover</option>
+									</select>
 							</tr>
+							<br>
+							<br>
 							<tr>
-								<select name='expireYY' id='expireYY' style="margin:10px">
-								    <option value=''>Year</option>
-								    <option value='10'>2010</option>
-								    <option value='11'>2011</option>
-								    <option value='12'>2012</option>
-								</select>
+								<form>
+									Card Number: <input type=text name="cardNumber" value="CardNumber">
+								</form>
+							</tr>
+							<br>
+							<br>
+							<tr>
+								<form>
+									Security code: <input type=text name="sec" value="security code">
+								</form>
+							</tr>
+							<br>
+							<tr>Expiration Date : </tr>
+							<tr>
+									<select name='expireMM' id='expireMM' style="margin:10px">
+									    <option value=''>Month</option>
+									    <option value='01'>January</option>
+									    <option value='02'>February</option>
+									    <option value='03'>March</option>
+									    <option value='04'>April</option>
+									    <option value='05'>May</option>
+									    <option value='06'>June</option>
+									    <option value='07'>July</option>
+									    <option value='08'>August</option>
+									    <option value='09'>September</option>
+									    <option value='10'>October</option>
+									    <option value='11'>November</option>
+									    <option value='12'>December</option>
+									</select>
+									<select name='expireYY' id='expireYY' style="margin:10px">
+									    <option value=''>Year</option>
+									    <option value='10'>2010</option>
+									    <option value='11'>2011</option>
+									    <option value='12'>2012</option>
+									</select>
 							</tr>
 						</table>
 						Billing Address: <input type=text name=userName style="margin:10px" placeholder='1 A St, Lincoln, NE-68508'><br>
-						Shipping Name: <input type=text name=userName style="margin:10px" placeholder='1 A St, Lincoln, NE-68508'><br>
+						Shipping Address: <input type=text name=userName style="margin:10px" placeholder='1 A St, Lincoln, NE-68508'><br>
 						Password:  <input type=password name=password style="margin:10px" placeholder='6-Characters'><br>
 					</form>
 					<div style="text-align:center; margin:10px;">

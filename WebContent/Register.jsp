@@ -17,7 +17,8 @@
 		<script> 
 			function validateForm(){
 				var x = document.forms["form"]["userName"].value;
-				var y = document.forms["form"]["userName"].value;
+				var y = document.forms["form"]["password"].value;
+				var z = document.forms["form"]["passwordC"].value;
 				if(x == ""){
 					alert("Username must be filled out");
 					return false;
@@ -26,13 +27,23 @@
 					alert("Password must be filled out");
 					return false;
 				}
+				if (z == ""){
+					alert("Password Confirmation must be filled out")
+					return false;
+				}
+				if (z != y){
+					alert("Passwords did not match")
+					return false;
+				}
 			}
 		</script>
 		<form style="text-align:center" name="form" onsubmit="return validateForm()" action=Register method="post">
 		
-			User Name: <input type=text name=userName><br>
+			User Name: <input type=text name=userName placeholder="Username"><br>
 			<br>
-			Password: <input type=password name=password><br>
+			Password: <input type=password name=password placeholder="Password"><br>
+			<br>
+			Confirm Password: <input type=password name=passwordC placeholder="Retype Password"><br>
 			<br>
 			<input type=submit value=Register> <br> 
 		

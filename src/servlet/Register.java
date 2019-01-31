@@ -43,13 +43,11 @@ public class Register extends HttpServlet {
 		
 		// Registration via the Users object
 		Users aUser = new Users(userName, password);
-		System.out.println("About to register User");
 		// Check if user exists already. if not register
 		if(!Users.validateUser(aUser, propFilePath)) {
 			aUser.registerUser(aUser, propFilePath);
-		}
+		} 
 		response.sendRedirect("Login.jsp"); 
-		System.out.println("User Registered");
 		
 	}
 

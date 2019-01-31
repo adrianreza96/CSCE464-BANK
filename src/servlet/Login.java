@@ -39,7 +39,6 @@ public class Login extends HttpServlet {
 		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
 		
 		Users u = new Users(userName, password);
-		System.out.println("Login Start");
 		if(!Users.validateUser(u, propFilePath)) {
 			response.sendRedirect("Register.jsp");
 		} else {
