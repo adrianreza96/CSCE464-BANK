@@ -55,14 +55,14 @@ public class DBAccess {
 	
 	public boolean findUserByUsername(String aUserName) {
 		boolean userExists = false;
-		String SQL = "SELECT * from Users";
+		String SQL = "SELECT * from users";
 	    Statement stat;
 		try {
 			stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(SQL);
 			
 			while (rs.next()){	
-				if(aUserName.equals( rs.getString(4) )) {
+				if(aUserName.equals( rs.getString("Username") )) {
 					userExists = true;
 				}    
 		    }
@@ -78,14 +78,14 @@ public class DBAccess {
 	
 	public boolean findUserByPassword(String password) {
 		boolean passwordMatches = false;
-		String SQL = "SELECT * from Users";
+		String SQL = "SELECT * from users";
 	    Statement stat;
 		try {
 			stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(SQL);
 			
 			while (rs.next()){	
-				if(password.equals( rs.getString(5) )) {
+				if(password.equals( rs.getString("Password") )) {
 					passwordMatches = true;
 				}    
 		    }
@@ -99,9 +99,29 @@ public class DBAccess {
 		return passwordMatches;
 	}
 	
+	public int getCustomerID(String username) {
+		String SQL = "SELECT * from users where Username='"+username+"'";
+	    Statement stat;
+	    int cId = -1;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			while (rs.next()){
+				if(username.equals( rs.getString("Username") )) {
+					cId = rs.getInt("Id");
+				} 
+		    }
+			
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cId;
+	}
 	
 	public Users returnUserByUsername(String aUserName) {
-		String SQL = "SELECT * from Users";
+		String SQL = "SELECT * from users";
 	    Statement stat;
 	   
 	    Users aUser = new Users();
@@ -129,7 +149,7 @@ public class DBAccess {
 
 	
 	public void displayAllUsers() {
-		String SQL = "SELECT * from Users";
+		String SQL = "SELECT * from users";
 	    Statement stat;
 		try {
 			stat = conn.createStatement();

@@ -11,7 +11,7 @@ public class UsersDB {
        	db.closeConnection();
     }
     
-    public boolean validateUserByUsername(String aUserName) {
+    public static boolean validateUserByUsername(String aUserName) {
     	    boolean userExists = false;
        	DBAccess db = new DBAccess();
        	db.connectMeIn();
@@ -21,7 +21,7 @@ public class UsersDB {
        	return userExists;
     }
     
-    public boolean validateUserByPassword(String password) {
+    public static boolean validateUserByPassword(String password) {
 	    boolean passwordMatches = false;
    	    DBAccess db = new DBAccess();
    	    db.connectMeIn();
@@ -39,5 +39,15 @@ public class UsersDB {
 	   	db.closeConnection();
 	   	
 	   	return aUser;
+    }
+    
+    public static int getUserID(String username) {
+    	int cId = -1;
+    	DBAccess db = new DBAccess();
+    	db.connectMeIn();
+    	cId = db.getCustomerID(username);
+    	db.closeConnection();
+    	return cId;
+    	
     }
 }

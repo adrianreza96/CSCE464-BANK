@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Users;
+import model.UsersDB;
 
 /**
  * Servlet implementation class Login
@@ -33,18 +35,20 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		
-		ServletContext sc = this.getServletContext();
-		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
+		String password = request.getParameter("password");	
 		Users u = new Users();
 		u.setUserName(userName);
 		u.setPassword(password);
-		if(!Users.validateUser(u, propFilePath)) {
-			response.sendRedirect("Register.jsp");
+		int customerId = -1;
+		if(UsersDB.validateUserByUsername(userName)) {
+			if(UsersDB.validateUserByPassword(password)) {	
+				customerId = UsersDB.getUserID(userName);
+				HttpSession session = request.getSession();
+				session.setAttribute("id", customerId);
+				response.sendRedirect("CustomerHomePage.jsp");
+			}
 		} else {
-			response.sendRedirect("CustomerHomePage.jsp");
+			response.sendRedirect("Register.jsp");
 		}
 	}
 
