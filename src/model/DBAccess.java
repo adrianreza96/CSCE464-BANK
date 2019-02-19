@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.Users;
-import com.mysql.jdbc.Driver;
+import com.mysql.jdbc.*;
 
 public class DBAccess {
 	Connection conn = null;
@@ -16,7 +16,7 @@ public class DBAccess {
 	
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	static final String DB_URL = "jdbc:mysql://localhost/MVCApp"; 
+	static final String DB_URL = "jdbc:mysql://cse.unl.edu:3306/aschlichtm"; 
 	//final String DB_URL = "jdbc:mysql://cse.unl.edu:3306/CSE_LOGIN";
 	
 	
@@ -38,7 +38,7 @@ public class DBAccess {
 		  String password = aUser.getPassword();
 		  
 
-		  sql = "INSERT INTO Users (First_Name, Last_Name, User_Name, Password)" +
+		  sql = "INSERT INTO users (FirstName, LastName, Username, Password)" +
 		          "VALUES ('" + firstName +
 				  "', '" + lastName + 
 				  "', '" + userName + 
