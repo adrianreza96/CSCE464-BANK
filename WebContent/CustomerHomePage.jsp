@@ -17,7 +17,7 @@
 		
 		<h1 style="text-align:center">Customer Home Page</h1>
 		
-		<form style="text-align:center" action=VenueAndConcertSearchQuery name="search">
+		<form style="text-align:center" action="VenueAndConcertSearchQuery.java" name="search">
 			<select name="venue">
 				<option value="Pinnacle Bank Arena">Pinnacle Bank Arena</option>
 			  	<option value="The Bourbon Theater">The Bourbon Theater</option>

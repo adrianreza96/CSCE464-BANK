@@ -12,7 +12,7 @@ public class UsersDB {
     }
     
     public static boolean validateUserByUsername(String aUserName) {
-    	    boolean userExists = false;
+    	boolean userExists = false;
        	DBAccess db = new DBAccess();
        	db.connectMeIn();
        	userExists = db.findUserByUsername(aUserName);

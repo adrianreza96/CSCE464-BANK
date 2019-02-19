@@ -31,6 +31,7 @@ public class VenueAndConcertSearchQuery extends HttpServlet {
 		String date = request.getParameter("datepicker");	
 		System.out.println(venue);
 		System.out.println(date);
+		
 	}
 
 	/**

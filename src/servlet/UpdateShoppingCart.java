@@ -45,7 +45,7 @@ public class UpdateShoppingCart extends HttpServlet {
 			session.setAttribute("cart", previousCartItems);
 		}
 		//stub 
-		//dispatcher.forward("tbd", "tbd");
+		dispatcher.forward("tbd", "tbd");
 	}
 
 	/**
