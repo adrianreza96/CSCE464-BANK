@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DBAccess;
 import model.Users;
+import model.UsersDB;
 
 /**
  * Servlet implementation class Register
@@ -35,18 +37,16 @@ public class Register extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		
-		
-		ServletContext sc = this.getServletContext();
-		String propFilePath = sc.getRealPath("/WEB-INF/users.properties");
-		
-		
-		// Registration via the Users object
-		Users aUser = new Users(userName, password);
-		// Check if user exists already. if not register
-		if(!Users.validateUser(aUser, propFilePath)) {
-			aUser.registerUser(aUser, propFilePath);
-		} 
+		Users u = new Users();
+		u.setUserName(userName);
+		u.setPassword(password);
+		u.setFirstName("Adam");
+		u.setLastName("Schlichtmann");
+		UsersDB.registerUser(u);
+		// Check if user exists; already. if not register
+//		if(!Users.validateUser(aUser, propFilePath)) {
+//			aUser.registerUser(aUser, propFilePath);
+//		} 
 		response.sendRedirect("Login.jsp"); 
 		
 	}

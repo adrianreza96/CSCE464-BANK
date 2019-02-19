@@ -12,6 +12,7 @@
 		  <a class="active" href="CustomerHomePage.jsp">Home</a>
 		  <a href="ViewOrders.jsp">Orders</a>
 		  <a href="Login.jsp" style="float:right">Log Out</a>
+		  <a href="VewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		</div>
 		<div align=center>
 			<h1>Your Review was Successfully Submitted MAKE SURE ERRORS ARE SHOWN</h1>

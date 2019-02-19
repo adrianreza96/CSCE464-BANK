@@ -12,25 +12,110 @@ import javax.servlet.ServletContext;
 
 public class Users {
 	
-	private String userName;
-	private String password;
+	private String FirstName;
+	private String LastName;
+	private String Address;
+	private String City;
+	private String State;
+	private String PostalCode;
+	private String EmailAddress;
+	private String PhoneNumber;
+	private String Birthday;
+	private String Username;
+	private String Password;
 	
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Users(String userName, String password) {
+	
+	
+	public Users() {
 		super();
-		this.userName = userName;
-		this.password = password;
+	}
+	
+	public String getFirstName() {
+		return FirstName;
+	}
+
+	public void setFirstName(String firstName) {
+		FirstName = firstName;
+	}
+
+	public String getLastName() {
+		return LastName;
+	}
+
+	public void setLastName(String lastName) {
+		LastName = lastName;
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public String getCity() {
+		return City;
+	}
+
+	public void setCity(String city) {
+		City = city;
+	}
+
+	public String getState() {
+		return State;
+	}
+
+	public void setState(String state) {
+		State = state;
+	}
+
+	public String getPostalCode() {
+		return PostalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		PostalCode = postalCode;
+	}
+
+	public String getEmailAddress() {
+		return EmailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		EmailAddress = emailAddress;
+	}
+
+	public String getPhoneNumber() {
+		return PhoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		PhoneNumber = phoneNumber;
+	}
+
+	public String getBirthday() {
+		return Birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		Birthday = birthday;
+	}
+
+	public String getUserName() {
+		return Username;
+	}
+
+	public void setUserName(String username) {
+		Username = username;
+	}
+
+	public String getPassword() {
+		return Password;
+	}
+
+	public void setPassword(String password) {
+		Password = password;
 	}
 	
 	public void registerUser(Users aUser, String propFilePath) {
