@@ -18,7 +18,7 @@
 			<form action=CustomerReview>
 				<textarea col="150" rows="8" type=text placeholder="Enter your Review" name="review"></textarea><br>
 				Star Rating: <br>
-				<select>
+				<select name="stars">
 					<option value="0">0</option>
 					<option value="1">1</option>
 					<option value="2">2</option>

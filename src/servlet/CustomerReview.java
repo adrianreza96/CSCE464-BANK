@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.Review;
+import model.ReviewDB;
 
 /**
  * Servlet implementation class CustomerReview
@@ -26,9 +30,18 @@ public class CustomerReview extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Take information from the CustomerReview jsp page and add it to the ReviewDB
-		// redirect to page below but send show if sucessful or not based on database attempt
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String review = request.getParameter("review");
+		String stars = request.getParameter("stars");
+		int rating = Integer.parseInt(stars);
+		
+		Review r = new Review();
+		HttpSession session = request.getSession();
+		int cID = (int) session.getAttribute("id");
+		System.out.println(cID);
+		r.setReview(review);
+		r.setRating(rating);
+		String result = ReviewDB.addReview(r);
+		// TODO STUB send the result to the next page
 		response.sendRedirect("CustomerReviewConfirmation.jsp");
 		
 	}

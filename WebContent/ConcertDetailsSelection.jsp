@@ -82,6 +82,7 @@
 		
 		
 		<h3>Reviews for Pinnacle Bank Arena</h3>
+		<form action="CustomerReview.jsp"><input type=submit value="Submit"></form>
 		<span class="heading">User Rating</span>
 		<span class="fa fa-star checked"></span>
 		<span class="fa fa-star checked"></span>

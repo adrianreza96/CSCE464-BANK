@@ -132,7 +132,7 @@ VALUES ("Scheels Arena", "4210 Vertrans Dr", "Fargo", "North Dakota", "58104");
 DROP TABLE IF EXISTS `performance` ;
 
 CREATE TABLE IF NOT EXISTS `performance` (
-  `Id` INT(11) NOT NULL,
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
   `StartTime` DATETIME NULL DEFAULT NULL,
   `EndTime` DATETIME NULL DEFAULT NULL,
   `concertID` INT NULL,
@@ -152,8 +152,30 @@ CREATE TABLE IF NOT EXISTS `performance` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-
-
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-04-23 07:00:00", "2019-04-23 10:00:00", 1, 1);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-09-12 05:00:00", "2019-09-12 07:00:00", 2, 1);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-05-15 07:00:00", "2019-05-15 10:00:00", 3, 1);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2020-01-23 07:00:00", "2020-01-23 10:00:00", 1, 2);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-08-17 05:00:00", "2019-08-17 07:00:00", 2, 2);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-07-05 07:00:00", "2019-07-05 10:00:00", 3, 2);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2020-03-14 07:00:00", "2020-03-14 10:00:00", 1, 3);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-10-14 05:00:00", "2019-10-14 07:00:00", 2, 3);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-11-08 07:00:00", "2019-11-08 10:00:00", 3, 3);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2020-05-01 07:00:00", "2020-05-01 10:00:00", 1, 4);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-03-28 05:00:00", "2019-03-28 07:00:00", 2, 4);
+INSERT INTO performance (StartTime, EndTime, concertID, venueID)
+VALUES ("2019-08-05 07:00:00", "2019-08-05 10:00:00", 3, 4);
 
 -- -----------------------------------------------------
 -- Table `customerreviews`
