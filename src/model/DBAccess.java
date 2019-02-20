@@ -223,6 +223,52 @@ public class DBAccess {
 		return c;
 	}
 	
+	// <---------------TicketTypes------------------>
+		public List<TicketTypes> getTicketTypesbyID(int tID) {
+			List<TicketTypes>  t = new ArrayList<TicketTypes>();
+			String SQL = "SELECT * from tickettypes WHERE idTicket='"+tID+"'";
+		    Statement stat;
+			try {
+				stat = conn.createStatement();
+				ResultSet rs = stat.executeQuery(SQL);
+				while (rs.next()){
+					TicketTypes TicketHolder = new TicketTypes();
+					TicketHolder.setIdTicket(rs.getInt("idTicket"));
+					TicketHolder.setSeatName(rs.getString("SeatName"));
+					TicketHolder.setTicket(rs.getString("Ticket"));
+				}
+			    stat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return t;
+		}
+		
+	// <---------------TicketVenuePrices------------------>
+		public List<TicketVenuePrices> getTicketVenuePricesbyVenueID(int vID) {
+			List<TicketVenuePrices>  t = new ArrayList<TicketVenuePrices>();
+			String SQL = "SELECT * from TicketVenuePrices WHERE idTicketVenuePrices='"+vID+"'";
+		    Statement stat;
+			try {
+				stat = conn.createStatement();
+				ResultSet rs = stat.executeQuery(SQL);
+				while (rs.next()){
+					TicketVenuePrices TicketVPriceHolder = new TicketVenuePrices();
+					TicketVPriceHolder.setIdTicketVenuePrices(rs.getInt("idTicketVenuePrices"));
+					TicketVPriceHolder.setVenueID(rs.getInt("venueID"));
+					TicketVPriceHolder.setTicketPrice(rs.getInt("TicketPrice"));
+					TicketVPriceHolder.setIdTicketVenuePrices(rs.getInt("venueID"));
+					TicketVPriceHolder.setTicketTypeID(rs.getInt("ticketTypeID"));
+					TicketVPriceHolder.setPerformanceID(rs.getInt("performanceID"));
+					t.add(TicketVPriceHolder);
+				}
+			    stat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return t;
+		}
+	
 	// <---------------Users------------------>
 	public void addSingleUser(Users aUser) {
 		  

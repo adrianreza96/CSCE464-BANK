@@ -55,7 +55,7 @@ VALUES ('Adrian', 'Ariffin', '1234 Z ST', 'Lincoln', 'Nebraska', '68507', 'adria
 DROP TABLE IF EXISTS `creditcards` ;
 
 CREATE TABLE IF NOT EXISTS `creditcards` (
-  `Id` INT(11) NOT NULL,
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
   `CardHolderName` VARCHAR(255) NULL DEFAULT NULL,
   `CreditCardNumber` CHAR(20) NOT NULL,
   `Balance` DECIMAL(16,2) NULL DEFAULT NULL,
@@ -71,8 +71,10 @@ CREATE TABLE IF NOT EXISTS `creditcards` (
     REFERENCES `users` (`Id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
-
-
+INSERT INTO creditcards (CardHolderName, CreditCardNumber, Balance, CardType, UserId, CVV, ExpirationDate)
+VALUES ('Adam Schlichtmann', '6011000200010000', 123410.23, 'Discover', 1, '999', '2029-01-01 01:00:00');
+INSERT INTO creditcards (CardHolderName, CreditCardNumber, Balance, CardType, UserId, CVV, ExpirationDate)
+VALUES ('Adrian Reza', '1000000200010000', 155023.10, 'MasterCard', '2', '123', '2025-09-01 01:00:00');
 -- -----------------------------------------------------
 -- Table `concert`
 -- -----------------------------------------------------
@@ -87,11 +89,11 @@ CREATE TABLE IF NOT EXISTS `concert` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 INSERT INTO concert (ConcertName, Description, Rating)
-VALUES ("Logic", "Join Logic on his Bobby Tarintino II tour!", "4"); 
+VALUES ('Logic', 'Join Logic on his Bobby Tarintino II tour!', '4'); 
 INSERT INTO concert (ConcertName, Description, Rating)
-VALUES ("Chance The Rapper", "Join Chance on his new Tour!","5"); 
+VALUES ('Chance The Rapper', 'Join Chance on his new Tour!','5'); 
 INSERT INTO concert (ConcertName, Description, Rating)
-VALUES ("Kyd the Band", "Join Kyd the Band on their first tour!", "4"); 
+VALUES ('Kyd the Band', 'Join Kyd the Band on their first tour!', '4'); 
 
 -- -----------------------------------------------------
 -- Table `venue`
@@ -116,13 +118,13 @@ CREATE TABLE IF NOT EXISTS `venue` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 INSERT INTO venue (Name, Address, City, State, PostalCode)
-VALUES ("Bourbon Theater", "1345 O St", "Lincoln", "Nebraska", "68510");
+VALUES ('Bourbon Theater', '1345 O St', 'Lincoln', 'Nebraska', '68510');
 INSERT INTO venue (Name, Address, City, State, PostalCode)
-VALUES ("Pinnacle Band Arena", "900 R St", "Lincoln", "Nebraska", "68510");
+VALUES ('Pinnacle Band Arena', '900 R St', 'Lincoln', 'Nebraska', '68510');
 INSERT INTO venue (Name, Address, City, State, PostalCode)
-VALUES ("FargoDome", "1900 University DR", "Fargo", "North Dakota", "58106");
+VALUES ('FargoDome', '1900 University DR', 'Fargo', 'North Dakota', '58106');
 INSERT INTO venue (Name, Address, City, State, PostalCode)
-VALUES ("Scheels Arena", "4210 Vertrans Dr", "Fargo", "North Dakota", "58104");
+VALUES ('Scheels Arena', '4210 Vertrans Dr', 'Fargo', 'North Dakota', '58104');
 
 
 
@@ -153,29 +155,29 @@ CREATE TABLE IF NOT EXISTS `performance` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-04-23 07:00:00", "2019-04-23 10:00:00", 1, 1);
+VALUES ('2019-04-23 07:00:00', '2019-04-23 10:00:00', 1, 1);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-09-12 05:00:00", "2019-09-12 07:00:00", 2, 1);
+VALUES ('2019-09-12 05:00:00', '2019-09-12 07:00:00', 2, 1);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-05-15 07:00:00", "2019-05-15 10:00:00", 3, 1);
+VALUES ('2019-05-15 07:00:00', '2019-05-15 10:00:00', 3, 1);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2020-01-23 07:00:00", "2020-01-23 10:00:00", 1, 2);
+VALUES ('2020-01-23 07:00:00', '2020-01-23 10:00:00', 1, 2);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-08-17 05:00:00", "2019-08-17 07:00:00", 2, 2);
+VALUES ('2019-08-17 05:00:00', '2019-08-17 07:00:00', 2, 2);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-07-05 07:00:00", "2019-07-05 10:00:00", 3, 2);
+VALUES ('2019-07-05 07:00:00', '2019-07-05 10:00:00', 3, 2);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2020-03-14 07:00:00", "2020-03-14 10:00:00", 1, 3);
+VALUES ('2020-03-14 07:00:00', '2020-03-14 10:00:00', 1, 3);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-10-14 05:00:00", "2019-10-14 07:00:00", 2, 3);
+VALUES ('2019-10-14 05:00:00', '2019-10-14 07:00:00', 2, 3);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-11-08 07:00:00", "2019-11-08 10:00:00", 3, 3);
+VALUES ('2019-11-08 07:00:00', '2019-11-08 10:00:00', 3, 3);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2020-05-01 07:00:00", "2020-05-01 10:00:00", 1, 4);
+VALUES ('2020-05-01 07:00:00', '2020-05-01 10:00:00', 1, 4);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-03-28 05:00:00", "2019-03-28 07:00:00", 2, 4);
+VALUES ('2019-03-28 05:00:00', '2019-03-28 07:00:00', 2, 4);
 INSERT INTO performance (StartTime, EndTime, concertID, venueID)
-VALUES ("2019-08-05 07:00:00", "2019-08-05 10:00:00", 3, 4);
+VALUES ('2019-08-05 07:00:00', '2019-08-05 10:00:00', 3, 4);
 
 -- -----------------------------------------------------
 -- Table `customerreviews`
@@ -183,7 +185,7 @@ VALUES ("2019-08-05 07:00:00", "2019-08-05 10:00:00", 3, 4);
 DROP TABLE IF EXISTS `customerreviews` ;
 
 CREATE TABLE IF NOT EXISTS `customerreviews` (
-  `Id` INT(11) NOT NULL,
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
   `concertID` INT(11) NULL DEFAULT NULL,
   `userID` INT(11) NULL DEFAULT NULL,
   `ReviewDate` VARCHAR(40) NULL DEFAULT NULL,
@@ -204,6 +206,12 @@ CREATE TABLE IF NOT EXISTS `customerreviews` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+INSERT INTO customerreviews (concertID, userID, ReviewDate, Rating, Review)
+VALUES (1, 1, '2018-03-09 10:22:00', 5, "Great Concert Would love to go again!");
+INSERT INTO customerreviews (concertID, userID, ReviewDate, Rating, Review)
+VALUES (2, 2, '2019-01-20 12:45:00', 4, "Good concert wish it would have been longer!");
+INSERT INTO customerreviews (concertID, userID, ReviewDate, Rating, Review)
+VALUES (3, 1, '2018-03-29 8:45:00', 5, "These guys are going to be huge this year!");
 
 
 -- -----------------------------------------------------
@@ -212,7 +220,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 DROP TABLE IF EXISTS `orders` ;
 
 CREATE TABLE IF NOT EXISTS `orders` (
-  `Id` INT(11) NOT NULL,
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
   `CustomerId` INT(11) NULL DEFAULT NULL,
   `TotalCost` INT(11) NULL DEFAULT NULL,
   `OrderDate` VARCHAR(40) NULL DEFAULT NULL,
@@ -227,6 +235,12 @@ CREATE TABLE IF NOT EXISTS `orders` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+INSERT INTO orders (CustomerId, TotalCost, OrderDate, BillingAddress, CreditCardNumber)
+VALUES (2, 75, '2018-03-29 12:45:00', "123 A St Lincoln NE", 1000000200010000);
+INSERT INTO orders (CustomerId, TotalCost, OrderDate, BillingAddress, CreditCardNumber)
+VALUES (1, 105, '2019-01-29 8:45:00', "412 Leigton AVE, Lincoln NE", 6011000200010000);
+INSERT INTO orders (CustomerId, TotalCost, OrderDate, BillingAddress, CreditCardNumber)
+VALUES (2, 75, '2018-011-20 10:00:00', "123 A St Lincoln NE", 1000000200010000);
 
 
 -- -----------------------------------------------------
@@ -235,7 +249,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 DROP TABLE IF EXISTS `orderitems` ;
 
 CREATE TABLE IF NOT EXISTS `orderitems` (
-  `Id` INT(11) NOT NULL,
+  `Id` INT(11) NOT NULL AUTO_INCREMENT,
   `OrderId` INT(11) NULL DEFAULT NULL,
   `PerformanceID` INT(11) NULL DEFAULT NULL,
   `Quantity` INT(11) NULL DEFAULT NULL,
@@ -254,20 +268,31 @@ CREATE TABLE IF NOT EXISTS `orderitems` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+INSERT INTO orderitems (OrderId, PerformanceID, Quantity)
+VALUES (1, 2, 3);
+INSERT INTO orderitems (OrderId, PerformanceID, Quantity)
+VALUES (2, 5, 3);
+INSERT INTO orderitems (OrderId, PerformanceID, Quantity)
+VALUES (3, 1, 2);
 
 
 -- -----------------------------------------------------
 -- Table `Ticket Types`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Ticket Types` ;
+DROP TABLE IF EXISTS `tickettypes` ;
 
-CREATE TABLE IF NOT EXISTS `Ticket Types` (
-  `idTicket Types` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `tickettypes` (
+  `idTicket` INT NOT NULL AUTO_INCREMENT,
   `SeatName` VARCHAR(45) NULL,
-  `Ticket Typescol` VARCHAR(45) NULL,
-  PRIMARY KEY (`idTicket Types`))
+  `Ticket` VARCHAR(45) NULL,
+  PRIMARY KEY (`idTicket`))
 ENGINE = InnoDB;
-
+INSERT INTO tickettypes (SeatName, Ticket)
+VALUES ("General Admission Floor", NULL);
+INSERT INTO tickettypes (SeatName, Ticket)
+VALUES ("Suite", NULL);
+INSERT INTO tickettypes (SeatName, Ticket)
+VALUES ("Reserved Seating", NULL);
 
 -- -----------------------------------------------------
 -- Table `TicketVenuePrices`
@@ -275,7 +300,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TicketVenuePrices` ;
 
 CREATE TABLE IF NOT EXISTS `TicketVenuePrices` (
-  `idTicketVenuePrices` INT NOT NULL,
+  `idTicketVenuePrices` INT NOT NULL AUTO_INCREMENT,
   `TicketPrice` INT NULL,
   `venueID` INT NULL,
   `ticketTypeID` INT NULL,
@@ -286,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `TicketVenuePrices` (
   INDEX `PerformanceID_idx` (`performanceID` ASC),
   CONSTRAINT `TicketTypeID_tick`
     FOREIGN KEY (`ticketTypeID`)
-    REFERENCES `Ticket Types` (`idTicket Types`)
+    REFERENCES `tickettypes` (`idTicket`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `VenueID_tick`
@@ -300,6 +325,102 @@ CREATE TABLE IF NOT EXISTS `TicketVenuePrices` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 1, 1, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 1, 2, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 1, 3, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 1, 1, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 1, 2, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 1, 3, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 1, 1, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 1, 2, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 1, 3, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 1, 1, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 1, 2, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 1, 3, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 1, 1, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 1, 2, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 1, 3, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 2, 1, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 2, 2, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 2, 3, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 2, 1, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 2, 2, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 2, 3, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 2, 1, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 2, 2, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 2, 3, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 3, 1, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 3, 2, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 3, 3, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 3, 1, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 3, 2, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 3, 3, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 3, 1, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 3, 2, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 3, 3, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 3, 1, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 3, 2, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 3, 3, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 4, 1, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 4, 2, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 4, 3, 1);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 4, 1, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 4, 2, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 4, 3, 2);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 4, 1, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 4, 2, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 4, 3, 3);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (50, 4, 1, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (80, 4, 2, 4);
+INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
+VALUES (100, 4, 3, 4);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
