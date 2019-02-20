@@ -48,6 +48,14 @@ public class UsersDB {
     	cId = db.getCustomerID(username);
     	db.closeConnection();
     	return cId;
-    	
+    }
+    
+    public static String getUsersFullName(String username) {
+    	String fullname = "";
+    	DBAccess db = new DBAccess();
+    	db.connectMeIn();
+    	fullname = db.getUsersName(username);
+    	db.closeConnection();
+    	return fullname;
     }
 }
