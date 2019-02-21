@@ -140,6 +140,32 @@ public class DBAccess {
 		
 	}
 	
+	public List<Venue> getAllVenues() {
+		List<Venue> v  = new ArrayList<Venue>();
+		String SQL = "SELECT * from venue";
+	    Statement stat;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			while (rs.next()){
+				Venue VenueHolder = new Venue();
+				VenueHolder.setName(rs.getString("Name"));
+				VenueHolder.setAddress(rs.getString("Address"));
+				VenueHolder.setCity(rs.getString("City"));
+				VenueHolder.setState(rs.getString("State"));
+				VenueHolder.setPostalCode(rs.getString("PostalCode"));
+				v.add(VenueHolder);
+		    }
+			
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return v;
+		
+	}
+	
 	// <---------------Orders------------------>
 	public List<Orders> getOrders(int cID) {
 		List<Orders>  o = new ArrayList<Orders>();
