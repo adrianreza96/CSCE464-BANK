@@ -33,36 +33,16 @@
 					</form>
 				</td>
 			</tr>
-			<tr>
-				<td style="text-align:center">NF</td>
-				<td style="text-align:center"><img src="Pics/NF.jpeg" alt="" border=3 height=150 width=150></img></td>
-				<td style="text-align:center">7:00pm July 12, 2019</td>
-				<td style="text-align:center">3</td>
-				<td style="text-align:center">X</td>
-				<td style="text-align:center">$40.00</td>
-				<td style="text-align:center">=</td>
-				<td style="text-align:center">$120.00</td>
-				<td style="text-align:center">
-					<form>
-						<input type=submit value="Delete">
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Panic at the Disco!</td>
-				<td style="text-align:center"><img src="Pics/Panic.jpeg" alt="" border=3 height=150 width=150></img></td>
-				<td style="text-align:center">9:00pm May 4, 2019</td>
-				<td style="text-align:center">4</td>
-				<td style="text-align:center">X</td>
-				<td style="text-align:center">$40.00</td>
-				<td style="text-align:center">=</td>
-				<td style="text-align:center">$160.00</td>
-				<td style="text-align:center">
-					<form>
-						<input type=submit value="Delete">
-					</form>
-				</td>
-			</tr>
+			 <c:forEach items="${concerts}" var="concert">
+		        <tr>
+		        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$concert.id}">View Concert Details</button></form></td>
+		            <td><c:out value="${concert.ConcertName}" /></td>
+		            <td><c:out value="${concert.performance.startTime}"/></td>
+		            <td><c:out value="${concert.performance.ticketVenuePrices.TicketPrice}"/></td>
+		            <td><c:out value="${concert.performance.remainingSeats}"/></td>
+		            <td><c:out value="${concert.image}"/>NO IMAGE</td>
+		        </tr>
+		    </c:forEach>
 			<tr>
 				<td style="text-align:center"></td>
 				<td style="text-align:center"></td>

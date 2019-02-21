@@ -19,6 +19,10 @@
 		    width: 20em;  height: 2em;
 		    background-color: cornsilk;
 		}
+		button[type=submit] {
+		    width: 20em;  height: 2em;
+		    background-color: cornsilk;
+		}
 		* {
 		 	font-family: Arial;
 		} 
@@ -34,61 +38,57 @@
 		  <a href="Login.jsp" style="float:right">Log Out</a>
 		  <a href="VewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		</div>
-		<table>
+		<table style="width:100%">
 			<tr>
 				<td>
 					<form action="ConcertSearchResults.jsp">
 						<input type=submit value="Back">
 					</form>
 				</td>
-				<td>
-					<form action="ViewAndCheckoutShoppingCart.jsp">
-						<input type=submit value="Add to Cart">
+
+				<td align="right">
+					<form action="UpdateShoppingCart">
+						<select name="ticketQuantity">
+						    <option value=1>1</option>
+						    <option value=2>2</option>
+						    <option value=3>3</option>
+						    <option value=4>4</option>
+						    <option value=5>5</option>
+						    <option value=6>6</option>
+						    <option value=7>7</option>
+						    <option value=8>8</option>
+						    <option value=9>9</option>
+					  	</select>
+					  	<select name="ticketType">
+							<c:forEach items ="${ticketTypes}" var="ticketType">
+								<option value="${ticketType.id}">${ticketType.name} Free Standing</option>
+							</c:forEach>
+						</select>
+						<button name="selectedConcert"type=submit value="${concert.id }">Add to Cart</button>
 					</form>
 				</td>
-				
 			</tr>
 		</table>
 		
 		
 		<h1 style="text-align:center">Details</h1>
-		<h2 style="text-align:center">Chance the Rapper</h2>
+		<h2 style="text-align:center" name="concertName">${concert.name}</h2>
 		<table>
-			<tr>
-				<td style="text-align:center">With a sound and style all his own, armed with an extra helping of swagger and boundless enthusiasm, Chance the Rapper became one of the most talked about up and coming Hip-Hop artists when he was barely twenty years old. When Chance was suspended for ten days during his senior year of High School in Chicago, he hatched his first mixtape, "10 Day" which would garner the attention of Childish Gambino. He subsequently appeared on tracks with his peers, such as Hoodie Allen and Joey Bada$$. His next mixtape, "Acid Rap," came out in 2013 to universal acclaim, and featured Action Bronson, Vic Mensa, Ab-Soul, and Twista, featuring production from the likes of Jake One and Nosaj Thing. Chance quickly gained a reputation for his unconventional, gravelly sing-rap delivery and his conscious, acute, and playful lyricism. He has since appeared at major festivals including Lollapalooza, and has launched his own tour which ended in December, 2013.</td>
-			</tr>
-			<tr>
-				<td style="text-align:center"><img src="Pics/ChanceAlbum.jpeg" alt="" border=3 height=200 width=200></img></td>
-			</tr>
-			<tr>
-				<td style="text-align:center">9:00pm February 24, 2019</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Opener: Kyle</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">General Admission (Floor): $100.00</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Lower Bowl: $80:00</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Upper Bowl: $50.00</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Available Seats: 200</td>
-			</tr>
+	        <tr>
+	            <td><c:out style="text-align:center" value="${concert.details}" /></td>
+	            <td><c:out style="text-align:center" value="${concert.image}" />NO IMAGE</td>
+	            <td><c:out style="text-align:center" value="${concert.venue}"/></td>
+	            <td><c:out style="text-align:center" value="${concert.startTime}"/></td>
+	            <td><c:out style="text-align:center" value="${concert.price}"/></td>
+	            <td><c:out style="text-align:center" value="${concert.remainingSeats}"/></td>
+	        </tr>
 		</table>
 		
 		
 		<h3>Reviews for Pinnacle Bank Arena</h3>
 		<form action="CustomerReview.jsp"><input type=submit value="Submit"></form>
 		<span class="heading">User Rating</span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star checked"></span>
-		<span class="fa fa-star"></span>
+		<h3>${concert.rating} / 5</h3>
 		
 		<br>
 		<br>
@@ -100,54 +100,14 @@
 				<th>Rating</th>
 				<th>Review</th>
 			</tr>
-			<tr>
-				<td style="text-align:center">Sam Johnson</td>
-				<td style="text-align:center">January 12th, 2019</td>
-				<td style="text-align:center">
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star"></span>
-				</td>
-				<td style="text-align:center">Facility was nice and people where mostly nice.</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Kathy Hendriks</td>
-				<td style="text-align:center">August 30th, 2018</td>
-				<td width="100" style="text-align:center">
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-				</td>
-				<td style="text-align:center">Loved this venue I was front row and loved every minute of the concert.</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Austin Larson</td>
-				<td style="text-align:center">August 15th, 2018</td>
-				<td style="text-align:center">
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-				</td>
-				<td style="text-align:center">Very clean facility with helpful staff.</td>
-			</tr>
-			<tr>
-				<td style="text-align:center">Mary Appleton</td>
-				<td style="text-align:center">June 27th, 2018</td>
-				<td style="text-align:center">
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star checked"></span>
-					<span class="fa fa-star "></span>
-					<span class="fa fa-star "></span>
-					<span class="fa fa-star"></span>
-				</td>
-				<td style="text-align:center">Concerts should not be help here. The top deck should not even be sold for concerts because you cannot hear anything.</td>
-			</tr>
+			<c:forEach items="${concerts}" var="concert">
+				<tr>
+		            <td><c:out style="text-align:center" value="${review.user.firstName}" /></td>
+		            <td><c:out style="text-align:center" value="${review.reviewDate}" /></td>
+		            <td><c:out style="text-align:center" value="${review.rating}"/></td>
+		            <td><c:out style="text-align:center" value="${review.review}"/></td>
+		        </tr>
+	        </c:forEach>
 		</table>
 	
 	</body>

@@ -6,12 +6,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Concerts;
 import model.Performance;
 import model.PerformanceDB;
 import model.Venue;
@@ -39,6 +41,7 @@ public class VenueAndConcertSearchQuery extends HttpServlet {
 		// TODO Auto-generated method stub
 		String venue = request.getParameter("venue");
 		String date = request.getParameter("datepicker");
+		System.out.println(request.getParameter("venueList"));
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         java.sql.Date parsed = null;
 		try {
@@ -48,12 +51,14 @@ public class VenueAndConcertSearchQuery extends HttpServlet {
 			e.printStackTrace();
 		}
         java.sql.Date sql = new java.sql.Date(parsed.getTime());
-		List<Performance> p = PerformanceDB.getPerformance(sql);
+//		List<Performance> p = PerformanceDB.getPerformance(sql);
 		List<Venue> v = VenueDB.getVenue(venue, sql);
-        
+//        List<Concerts> c = ConcertsDB.getAllConcerts();
 	    
-		System.out.println(p);
+//		System.out.println(p);
 		System.out.println(v);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ConcertSearchResults.jsp");
+//		request.setAttribute("concerts", c);
 		
 	}
 

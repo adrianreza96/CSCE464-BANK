@@ -2,8 +2,11 @@ package servlet;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +17,8 @@ import javax.servlet.http.HttpSession;
 
 import model.Users;
 import model.UsersDB;
+import model.Venue;
+import model.VenueDB;
 
 /**
  * Servlet implementation class Login
@@ -35,17 +40,21 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");	
+		String password = request.getParameter("password");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerHomePage.jsp");
 		Users u = new Users();
 		u.setUserName(userName);
 		u.setPassword(password);
+		VenueDB venue = new VenueDB();
 		int customerId = -1;
 		if(UsersDB.validateUserByUsername(userName)) {
 			if(UsersDB.validateUserByPassword(password)) {	
 				customerId = UsersDB.getUserID(userName);
 				HttpSession session = request.getSession();
 				session.setAttribute("id", customerId);
-				response.sendRedirect("CustomerHomePage.jsp");
+				List<Venue> venueList = VenueDB.getAllVenues();
+				session.setAttribute("venueList", venueList);
+				dispatcher.forward(request, response);
 			}
 		} else {
 			response.sendRedirect("Register.jsp");

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>User HomePage</title>
 </head>
 	<body>
@@ -17,21 +17,16 @@
 		
 		<h1 style="text-align:center">Customer Home Page</h1>
 		
-		<form style="text-align:center" action="VenueAndConcertSearchQuery.java" name="search">
+		<form style="text-align:center" action="ConcertSearchResults.jsp" name="search">
+			Select a Venue :
 			<select name="venue">
-				<option value="Pinnacle Bank Arena">Pinnacle Bank Arena</option>
-			  	<option value="The Bourbon Theater">The Bourbon Theater</option>
-			  	<option value="The Rococo Theater">The Rococo Theater</option>
-			  	<option value="Pinewood Bowl Theater">Pinewood Bowl Theater</option>
+				<c:forEach items ="${venueList}" var="venue">
+					<option value="${venue.name}">${venue.name}</option>
+				</c:forEach>
 			</select>
-			<p>Date: <input type="date"  placeholder="Enter Date (yyyy-mm-dd)" id="datepicker" value="2019-02-19" min="2019-02-01" max="2019-12-31"></p>
+			<p>Date: <input type="date"  placeholder="Enter Date (yyyy-mm-dd)" id="datepicker" value="2019-02-21" min="2019-02-01" max="2019-12-31"></p>
 			<input type=submit value="Search">
 		</form>
 		
-		<script>
-		  $( function() {
-		    $( "#datepicker" ).datepicker();
-		  } );
-		</script>
 	</body>
 </html>

@@ -15,6 +15,14 @@
 		  <a href="VewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		</div>
 		<div align=center>
+			<% if(request.getParameter("status").equals("true")){
+				out.print(" Your Review was Successfully Submitted");		
+			}else {%>	
+			<%
+				out.print(request.getParameter("status"));
+			}
+			%>
+			
 			<h1>Your Review was Successfully Submitted MAKE SURE ERRORS ARE SHOWN</h1>
 			<form action="CustomerHomePage.jsp">
 				<input type=submit value="Return to Home Page">

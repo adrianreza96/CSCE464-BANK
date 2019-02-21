@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,11 +38,15 @@ public class CustomerReview extends HttpServlet {
 		
 		Review r = new Review();
 		HttpSession session = request.getSession();
+		RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerReviewConfirmation.jsp");
 		int cID = (int) session.getAttribute("id");
 		System.out.println(cID);
 		r.setReview(review);
 		r.setRating(rating);
 		String result = ReviewDB.addReview(r);
+		boolean status = false;
+		request.setAttribute("status", status);
+		dispatcher.forward(request, response);
 		// TODO STUB send the result to the next page
 		response.sendRedirect("CustomerReviewConfirmation.jsp");
 		
