@@ -39,7 +39,7 @@
 
 		    <c:forEach items="${concerts}" var="concert">
 		        <tr>
-		        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$concert.id}">View Concert Details</button></form></td>
+		        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$concert.performance.id}">View Concert Details</button></form></td>
 		            <td><c:out value="${concert.ConcertName}" /></td>
 		            <td><c:out value="${concert.performance.venue.name}" /></td>
 		            <td><c:out value="${concert.performance.startTime}"/></td>
