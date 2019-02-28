@@ -8,9 +8,18 @@ public class Performance {
 	private Date EndTime;
 	private int concertID;
 	private int venueID;
+	private int remainingSeats;
 	
 	public Performance() {
 		super();
+	}
+
+	public int getRemainingSeats() {
+		return remainingSeats;
+	}
+
+	public void setRemainingSeats(int remainingSeats) {
+		this.remainingSeats = remainingSeats;
 	}
 
 	public int getId() {

@@ -88,12 +88,12 @@ CREATE TABLE IF NOT EXISTS `concert` (
   `Rating` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-INSERT INTO concert (ConcertName, Description, Rating)
-VALUES ('Logic', 'Join Logic on his Bobby Tarintino II tour!', '4'); 
-INSERT INTO concert (ConcertName, Description, Rating)
-VALUES ('Chance The Rapper', 'Join Chance on his new Tour!','5'); 
-INSERT INTO concert (ConcertName, Description, Rating)
-VALUES ('Kyd the Band', 'Join Kyd the Band on their first tour!', '4'); 
+INSERT INTO concert (ConcertName, Description, Rating, Thumbnail)
+VALUES ('Logic', 'Join Logic on his Bobby Tarintino II tour!', '4', '../WebContent/Pics/Logic.jpeg'); 
+INSERT INTO concert (ConcertName, Description, Rating, Thumbnail)
+VALUES ('Chance The Rapper', 'Join Chance on his new Tour!','5', '../WebContent/Pics/Chance.jpg'); 
+INSERT INTO concert (ConcertName, Description, Rating, Thumbnail)
+VALUES ('Kyd the Band', 'Join Kyd the Band on their first tour!', '4', '../WebContent/Pics/KydTheBand.jpg'); 
 
 -- -----------------------------------------------------
 -- Table `venue`
@@ -290,8 +290,6 @@ ENGINE = InnoDB;
 INSERT INTO tickettypes (SeatName, Ticket)
 VALUES ("General Admission Floor", NULL);
 INSERT INTO tickettypes (SeatName, Ticket)
-VALUES ("Suite", NULL);
-INSERT INTO tickettypes (SeatName, Ticket)
 VALUES ("Reserved Seating", NULL);
 
 -- -----------------------------------------------------
@@ -330,97 +328,66 @@ VALUES (50, 1, 1, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 1, 2, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 1, 3, 1);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 1, 1, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 1, 2, 2);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 1, 3, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 1, 1, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 1, 2, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 1, 3, 3);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 1, 1, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 1, 2, 4);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 1, 3, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 1, 1, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 1, 2, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 1, 3, 1);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 2, 1, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 2, 2, 2);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 2, 3, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 2, 1, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 2, 2, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 2, 3, 3);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 2, 1, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 2, 2, 4);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 2, 3, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 3, 1, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 3, 2, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 3, 3, 1);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 3, 1, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 3, 2, 2);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 3, 3, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 3, 1, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 3, 2, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 3, 3, 3);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 3, 1, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 3, 2, 4);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 3, 3, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 4, 1, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 4, 2, 1);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 4, 3, 1);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 4, 1, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 4, 2, 2);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 4, 3, 2);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 4, 1, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 4, 2, 3);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 4, 3, 3);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (50, 4, 1, 4);
 INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
 VALUES (80, 4, 2, 4);
-INSERT INTO TicketVenuePrices (TicketPrice, venueID, ticketTypeID, performanceID)
-VALUES (100, 4, 3, 4);
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

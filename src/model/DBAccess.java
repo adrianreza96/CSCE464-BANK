@@ -62,9 +62,9 @@ public class DBAccess {
 	
 	
 	// <---------------Performances------------------>
-	public List<Performance> getPerformancebyDate(Date d) {
+	public List<Performance> getPerformancebyDateandVenue(Date d, int vID) {
 		List<Performance> p  = new ArrayList<Performance>();
-		String SQL = "SELECT * from performance WHERE StartTime>'"+d+"'";
+		String SQL = "SELECT * from performance WHERE StartTime>'"+d+"' and venueID='" + vID +"'";
 	    Statement stat;
 		try {
 			stat = conn.createStatement();
@@ -76,6 +76,7 @@ public class DBAccess {
 				PerformanceHolder.setConcertID(rs.getInt("concertID"));
 				PerformanceHolder.setVenueID(rs.getInt("venueID"));
 				PerformanceHolder.setId(rs.getInt("Id"));
+				PerformanceHolder.setRemainingSeats(rs.getInt("remainingSeats"));
 				p.add(PerformanceHolder);
 		    }
 			
@@ -88,21 +89,20 @@ public class DBAccess {
 		
 	}
 	
-	public List<Performance> getPerformancebyID(int pID) {
-		List<Performance> p  = new ArrayList<Performance>();
+	public Performance getPerformancebyID(int pID) {
+		Performance p  = new Performance();
 		String SQL = "SELECT * from performance WHERE Id='"+pID+"'";
 	    Statement stat;
 		try {
 			stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(SQL);
 			while (rs.next()){
-				Performance PerformanceHolder = new Performance();
-				PerformanceHolder.setStartTime(rs.getDate("StartTime"));
-				PerformanceHolder.setEndTime(rs.getDate("EndTime"));
-				PerformanceHolder.setConcertID(rs.getInt("concertID"));
-				PerformanceHolder.setVenueID(rs.getInt("venueID"));
-				PerformanceHolder.setId(rs.getInt("Id"));
-				p.add(PerformanceHolder);
+				p.setStartTime(rs.getDate("StartTime"));
+				p.setEndTime(rs.getDate("EndTime"));
+				p.setConcertID(rs.getInt("concertID"));
+				p.setVenueID(rs.getInt("venueID"));
+				p.setId(rs.getInt("Id"));
+				p.setRemainingSeats(rs.getInt("remainingSeats"));
 		    }
 			
 		    stat.close();
@@ -113,6 +113,54 @@ public class DBAccess {
 		return p;
 		
 	}
+	
+	// <---------------Concerts------------------>
+	public Concerts getConcertBypID(int pID) {
+		Concerts c  = new Concerts();
+		String SQL = "SELECT * from performance WHERE Id='"+pID+"'";
+		int cID = -1;
+	    Statement stat;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			while (rs.next()){
+				cID = rs.getInt("concertID");
+				Venue VenueHolder = new Venue();
+				VenueHolder.setName(rs.getString("Name"));
+				VenueHolder.setAddress(rs.getString("Address"));
+				VenueHolder.setCity(rs.getString("City"));
+				VenueHolder.setState(rs.getString("State"));
+				VenueHolder.setPostalCode(rs.getString("PostalCode"));
+				v.add(VenueHolder);
+		    }
+			
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		SQL = "SELECT * from concert WHERE Id ='" + cID + "'";
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			while (rs.next()){
+				c.setId(rs.getInt("Id"));
+				c.setConcertName(rs.getString("ConcertName"));
+				c.setDescription(rs.getString("Description"));
+				c.setRating(rs.getString("Rating"));
+				c.setThumbnail(rs.getString("Thumbnail"));
+		    }
+			
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+		
+	}
+	
 	// <---------------Venues------------------>
 	public List<Venue> getVenue(String VenueName, Date date) {
 		List<Venue> v  = new ArrayList<Venue>();
@@ -327,6 +375,31 @@ public class DBAccess {
 		public List<TicketVenuePrices> getTicketVenuePricesbyVenueID(int vID) {
 			List<TicketVenuePrices>  t = new ArrayList<TicketVenuePrices>();
 			String SQL = "SELECT * from TicketVenuePrices WHERE idTicketVenuePrices='"+vID+"'";
+		    Statement stat;
+			try {
+				stat = conn.createStatement();
+				ResultSet rs = stat.executeQuery(SQL);
+				while (rs.next()){
+					TicketVenuePrices TicketVPriceHolder = new TicketVenuePrices();
+					TicketVPriceHolder.setIdTicketVenuePrices(rs.getInt("idTicketVenuePrices"));
+					TicketVPriceHolder.setVenueID(rs.getInt("venueID"));
+					TicketVPriceHolder.setTicketPrice(rs.getInt("TicketPrice"));
+					TicketVPriceHolder.setIdTicketVenuePrices(rs.getInt("venueID"));
+					TicketVPriceHolder.setTicketTypeID(rs.getInt("ticketTypeID"));
+					TicketVPriceHolder.setPerformanceID(rs.getInt("performanceID"));
+					t.add(TicketVPriceHolder);
+				}
+			    stat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return t;
+		}
+		
+		
+		public List<TicketVenuePrices> getTicketVenuePricesbyVenuePID(int PID) {
+			List<TicketVenuePrices>  t = new ArrayList<TicketVenuePrices>();
+			String SQL = "SELECT * from TicketVenuePrices WHERE performanceID='"+PID+"'";
 		    Statement stat;
 			try {
 				stat = conn.createStatement();
