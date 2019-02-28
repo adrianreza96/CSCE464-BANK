@@ -32,10 +32,13 @@ public class ViewOrders extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("WHatasdf asdfa serfasw ");
+		
 		HttpSession session = request.getSession();
 		int userID = (int) session.getAttribute("id");
 		List<Orders> orders = OrdersDB.getOrders(userID);
 		session.setAttribute("orders", orders);
+		response.sendRedirect("ViewOrders.jsp");
 		
 	}
 
