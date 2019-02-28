@@ -5,7 +5,7 @@ import java.util.List;
 public class CPTValues {
 	private Performance p;
 	private Concerts c;
-	private List<TicketVenuePrices> t;
+	private TicketVenuePrices t;
 	
 	public CPTValues() {
 		super();
@@ -27,14 +27,12 @@ public class CPTValues {
 		this.c = c;
 	}
 
-	public List<TicketVenuePrices> getT() {
+	public TicketVenuePrices getT() {
 		return t;
 	}
 
-	public void setT(List<TicketVenuePrices> t) {
+	public void setT(TicketVenuePrices t) {
 		this.t = t;
 	}
-
-	
 	
 }

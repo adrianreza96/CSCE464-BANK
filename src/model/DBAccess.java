@@ -417,28 +417,27 @@ public class DBAccess {
 		}
 		
 		
-		public List<TicketVenuePrices> getTicketVenuePricesbyVenuePID(int PID) {
-			List<TicketVenuePrices>  t = new ArrayList<TicketVenuePrices>();
+		public TicketVenuePrices getTicketVenuePricesbyVenuePID(int PID) {
 			String SQL = "SELECT * from TicketVenuePrices WHERE performanceID='"+PID+"'";
 		    Statement stat;
+		    TicketVenuePrices TicketVPriceHolder = new TicketVenuePrices();
 			try {
 				stat = conn.createStatement();
 				ResultSet rs = stat.executeQuery(SQL);
 				while (rs.next()){
-					TicketVenuePrices TicketVPriceHolder = new TicketVenuePrices();
+					
 					TicketVPriceHolder.setIdTicketVenuePrices(rs.getInt("idTicketVenuePrices"));
 					TicketVPriceHolder.setVenueID(rs.getInt("venueID"));
 					TicketVPriceHolder.setTicketPrice(rs.getInt("TicketPrice"));
 					TicketVPriceHolder.setIdTicketVenuePrices(rs.getInt("venueID"));
 					TicketVPriceHolder.setTicketTypeID(rs.getInt("ticketTypeID"));
 					TicketVPriceHolder.setPerformanceID(rs.getInt("performanceID"));
-					t.add(TicketVPriceHolder);
 				}
 			    stat.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return t;
+			return TicketVPriceHolder;
 		}
 	
 	// <---------------Users------------------>

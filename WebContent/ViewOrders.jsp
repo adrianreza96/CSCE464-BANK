@@ -5,6 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Orders</title>
+<script>
+	function makeTable(){
+		var orders = session.getAttribute("orders");
+		var r = 0;
+		foreach (order in orders) {
+		    var x = document.getElementById('insertfirsttable').insertRow(r);
+		    for (var c = 0; c < 4; c += 1) {
+		      var y = x.insertCell(c);
+		    }
+		    table.rows[r].cells[0].innerHTML = order.;
+		    table.rows[r].cells[1].innerHTML = filling1;
+		    table.rows[r].cells[2].innerHTML = filling2;
+		    table.rows[r].cells[3].innerHTML = filling3;
+		    r+=1;
+		}
+		
+	}
+</script>
 </head>
 	<body>
 		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
@@ -15,7 +33,7 @@
 		  <a href="VewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		</div>
 		<h1 style="text-align:center">Orders</h1>
-		<table style="width:100%">
+		<table style="width:100%" id="orderTable">
 		  	<tr>
 			  	<th></th>
 			    <th>Order Number</th>
