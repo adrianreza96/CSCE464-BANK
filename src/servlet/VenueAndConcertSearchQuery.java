@@ -51,9 +51,8 @@ public class VenueAndConcertSearchQuery extends HttpServlet {
 		String venue = request.getParameter("venue");
 		String date = request.getParameter("datepicker");
 		System.out.println(venue);
-
+		
 		System.out.println(date);
-
         List<Performance> perfList = PerformanceDB.getPerformancebyDate(date, Integer.parseInt(venue));
         for(int i = 0 ; i<perfList.size(); i++) {
         	cpt.add(cptDB.getCPTData(perfList.get(i).getId()));

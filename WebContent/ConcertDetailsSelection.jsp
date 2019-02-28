@@ -36,7 +36,7 @@
 		  <a class="active" href="CustomerHomePage.jsp">Home</a>
 		  <a href="ViewOrders.jsp">Orders</a>
 		  <a href="Login.jsp" style="float:right">Log Out</a>
-		  <a href="VewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
+		  <a href="ViewAndCheckoutShoppingCart.jsp">Shopping Cart</a>
 		</div>
 		<table style="width:100%">
 			<tr>
@@ -70,19 +70,21 @@
 			</tr>
 		</table>
 		
+		<div style="text-align:center">
+			<h1 style="text-align:center">Details</h1>
+			<h2 style="text-align:center" name="concertName">${cpt.c.getConcertName()}</h2>
+			<table style="text-align:center">
+		        <tr style="text-align:center">
+		            <tr><c:out style="text-align:center" value="${cpt.c.getDescription()}" />${cpt.c.getDescription()}</td><br>
+		            <tr><c:out style="text-align:center" value="${cpt.c.getThumbnail()}" /><img src="${cpt.c.getThumbnail()}" alt="" border=3 height=100 width=100></img></td><br>
+		            <tr><c:out style="text-align:center" value="${cpt.v.getName()}"/>${cpt.v.getName()}</td><br>
+		            <tr><c:out style="text-align:center" value="${cpt.p.getStartTime()}"/>Date/Time : ${cpt.p.getStartTime()}</td><br>
+		            <tr><c:out style="text-align:center" value="${cpt.t.getTicketPrice()}"/>Tickets : $ ${cpt.t.getTicketPrice()}</td><br>
+		            <tr><c:out style="text-align:center" value="${cpt.p.getRemainingSeats()}"/>Remaining Seats : ${cpt.p.getRemainingSeats()}</td><br>
+		        </tr>
+			</table>
+		</div>
 		
-		<h1 style="text-align:center">Details</h1>
-		<h2 style="text-align:center" name="concertName">${cpt.c.getConcertName()}</h2>
-		<table style="text-align:center">
-	        <tr style="text-align:center">
-	            <tr><c:out style="text-align:center" value="${cpt.c.getDescription()}" />${cpt.c.getDescription()}</td><br>
-	            <tr><c:out style="text-align:center" value="${cpt.c.getThumbnail()}" />${cpt.c.getThumbnail()}</td><br>
-	            <tr><c:out style="text-align:center" value="${cpt.v.getName()}"/>${cpt.v.getName()}</td><br>
-	            <tr><c:out style="text-align:center" value="${cpt.p.getStartTime()}"/>Date/Time : ${cpt.p.getStartTime()}</td><br>
-	            <tr><c:out style="text-align:center" value="${cpt.t.getTicketPrice()}"/>Tickets : $ ${cpt.t.getTicketPrice()}</td><br>
-	            <tr><c:out style="text-align:center" value="${cpt.p.getRemainingSeats()}"/>Remaining Seats : ${cpt.p.getRemainingSeats()}</td><br>
-	        </tr>
-		</table>
 		
 		
 		<h3>Reviews for Pinnacle Bank Arena</h3>

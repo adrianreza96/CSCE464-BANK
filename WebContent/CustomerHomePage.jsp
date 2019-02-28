@@ -21,9 +21,10 @@
 		<form style="text-align:center" action=VenueAndConcertSearchQuery name="search">
 			Select a Venue :
 			<select name="venue">
-				<c:forEach items ="${venueList}" var="venue">
-					<option value="${venue.getId()}">${venue.Name}</option>
-				</c:forEach>
+					<option value="${venueList.get(0).getId()}">${venueList.get(0).getName()}</option>
+					<option value="${venueList.get(1).getId()}">${venueList.get(1).getName()}</option>
+					<option value="${venueList.get(2).getId()}">${venueList.get(2).getName()}</option>
+					<option value="${venueList.get(3).getId()}">${venueList.get(3).getName()}</option>
 			</select>
 			<p>Date: <input type="date"  placeholder="Enter Date (yyyy-mm-dd)" name="datepicker" value="2019-02-21" min="2019-02-01" max="2019-12-31"></p>
 			<input type=submit value="Search">

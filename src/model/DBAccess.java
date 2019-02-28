@@ -209,11 +209,15 @@ public class DBAccess {
 		try {
 			stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(SQL);
-			v.setName(rs.getString("Name"));
-			v.setAddress(rs.getString("Address"));
-			v.setCity(rs.getString("City"));
-			v.setState(rs.getString("State"));
-			v.setPostalCode(rs.getString("PostalCode"));
+			while (rs.next()){
+				
+				v.setName(rs.getString("Name"));
+				v.setAddress(rs.getString("Address"));
+				v.setCity(rs.getString("City"));
+				v.setState(rs.getString("State"));
+				v.setPostalCode(rs.getString("PostalCode"));
+				
+		    }
 
 		    stat.close();
 		        

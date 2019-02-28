@@ -36,7 +36,7 @@
 			    <td style="text-align:center"><img src="Pics/NF.jpeg" alt="" border=3 height=100 width=100></img></td>
 
 		    </tr>
-			<h2>${cpt.get(0).c.getConcertName()} here</h2>
+
 		    <c:forEach items="${cpt}" var="concert">
 		        <tr>
 		        	<td style="text-align:center"><form action=ConcertSearchResult ><button name="detailsButton" type=submit value="${concert.p.id}">View Concert Details</button></form></td>
