@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import model.Concerts;
+import model.ShoppingCart;
+import model.ShoppingCartDB;
 
 /**
  * Servlet implementation class UpdateShoppingCart
@@ -36,11 +38,11 @@ public class UpdateShoppingCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UpdateShoppingCart");
 		if(!request.getParameter("selectedConcert").isEmpty()) {
-			addToCart(request, response);
+			addToCart(request);
 		}else if (!request.getParameter("deleteConcert").isEmpty()) {
-			deleteFromCart(request, response);
+			deleteFromCart(request);
 		}
-		loadConcerts(request, session); //load concerts variable to be used on front end
+		loadConcerts(request); //load concerts variable to be used on front end
 		dispatcher.forward(request, response);
 	}
 
@@ -54,8 +56,10 @@ public class UpdateShoppingCart extends HttpServlet {
 	
 	private void loadConcerts(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ArrayList<ArrayList<String>> previousCartItems = (ArrayList<ArrayList<String>>)session.getAttribute("cart");
-		ArrayList<Concerts> concerts = new ArrayList<Concerts>;
+		List<List<ShoppingCart>> previousCartItems = (ArrayList<List<ShoppingCart>>)session.getAttribute("cart");
+		List<ShoppingCart> concerts = new ArrayList<ShoppingCart>();
+		ShoppingCart cart = new ShoppingCart();
+		ShoppingCartDB cartDB = new ShoppingCartDB();
 		for(int i = 0 ; i< previousCartItems.size();i++) {
 			//iterate over the cart items to obtain the concert ID to pass over to the shopping cart page
 			// perform db look up for concert object based on ID
@@ -66,7 +70,7 @@ public class UpdateShoppingCart extends HttpServlet {
 
 	private void deleteFromCart(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		ArrayList<ArrayList<String>> previousCartItems = (ArrayList<ArrayList<String>>)session.getAttribute("cart");
+		List<List<String>> previousCartItems = (ArrayList<List<String>>)session.getAttribute("cart");
 		String selectedConcert = request.getParameter("concertID");
 
 		for(int i = 0 ; i< previousCartItems.size();i++) {
@@ -86,17 +90,19 @@ public class UpdateShoppingCart extends HttpServlet {
 		String selectedConcert = request.getParameter("concertID");
 		String numOfTickets = request.getParameter("ticketQuantity");
 		String ticketType = request.getParameter("ticketType");
-		ArrayList<String> temp = new ArrayList<String>();
-		temp.add(selectedConcert);
-		temp.add(numOfTickets);
-		temp.add(ticketType);
-		ArrayList<ArrayList<String>> previousCartItems = (ArrayList<ArrayList<String>>)session.getAttribute("cart");
+		List<ShoppingCart> concerts = new ArrayList<ShoppingCart>();
+		ShoppingCart cart = new ShoppingCart();
+		ShoppingCartDB cartDB = new ShoppingCartDB();
+		List<List<ShoppingCart>> temp = new ArrayList<List<ShoppingCart>>();
+		List<ShoppingCart> tempConcert = ShoppingCartDB.getShoppingCartByOrderIDAndTicketTypeID(Integer.parseInt(selectedConcert), Integer.parseInt(ticketType));
+		temp.add(tempConcert);
+		List<List<ShoppingCart>> previousCartItems = (ArrayList<List<ShoppingCart>>)session.getAttribute("cart");
 		if (previousCartItems.isEmpty()) {
-			previousCartItems = new ArrayList<ArrayList<String>>();
-			previousCartItems.add(temp);
+			previousCartItems = new ArrayList<List<ShoppingCart>>();
+			previousCartItems.addAll(temp);
 			session.setAttribute("cart", temp);
 		}else {
-			previousCartItems.add(temp);
+			previousCartItems.addAll(temp);
 			session.setAttribute("cart", previousCartItems);
 		}
 	}
