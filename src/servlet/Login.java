@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import model.Users;
 import model.UsersDB;
 import model.Venue;
@@ -43,6 +44,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerHomePage.jsp");
 		Users u = new Users();
+		UsersDB userDB = new UsersDB();
 		u.setUserName(userName);
 		u.setPassword(password);
 		VenueDB venue = new VenueDB();
@@ -54,6 +56,10 @@ public class Login extends HttpServlet {
 				session.setAttribute("id", customerId);
 				List<Venue> venueList = VenueDB.getAllVenues();
 				session.setAttribute("venueList", venueList);
+				Users temp = new Users();
+				temp = userDB.getUser(userName);
+				session.setAttribute("user", temp );
+				System.out.println(userDB.getUser(userName));
 				dispatcher.forward(request, response);
 			}
 		} else {

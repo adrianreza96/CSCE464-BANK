@@ -25,9 +25,9 @@ public class Users {
 	private String Password;
 	
 	
-	
 	public Users() {
 		super();
+		System.out.println();
 	}
 	
 	public String getFirstName() {
