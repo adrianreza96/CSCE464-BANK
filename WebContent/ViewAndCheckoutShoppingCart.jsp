@@ -35,12 +35,13 @@
 			</tr>
 			 <c:forEach items="${concerts}" var="concert">
 		        <tr>
-		        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$concert.id}">View Concert Details</button></form></td>
-		            <td><c:out value="${concert.ConcertName}" /></td>
-		            <td><c:out value="${concert.performance.startTime}"/></td>
-		            <td><c:out value="${concert.performance.ticketVenuePrices.TicketPrice}"/></td>
-		            <td><c:out value="${concert.performance.remainingSeats}"/></td>
-		            <td><c:out value="${concert.image}"/>NO IMAGE</td>
+		        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$cpt.c.id}">View Concert Details</button></form></td>
+	            	<td><c:out value="${cpt.c.getDescription()}" />${cpt.c.getDescription()}</td>
+		            <td><c:out value="${cpt.p.StartTime}"/>${cpt.p.StartTime}</td>
+		            <td><c:out value="${cpt.t.price}"/>${cpt.t.price}</td>
+		            <td><c:out value="${cpt.p.remainingSeats}"/>${concert.performance.remainingSeats}</td>
+		            <td><c:out value="${cpt.c.Thumbnail}"/>NO IMAGE ${concert.image}</td>
+		            <td style="text-align:center"><form action=UpdateShoppingCart><button name="deleteConcert" type=submit value=1>Remove</button></form></td>
 		        </tr>
 		    </c:forEach>
 			<tr>

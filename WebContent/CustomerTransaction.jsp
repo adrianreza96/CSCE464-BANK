@@ -40,14 +40,17 @@
 				    <td style="text-align:center">7:00pm</td>
 				    <td style="text-align:center">$120.00</td>		    	
 			    </tr>
-			  	<tr>
-				  	<td style="text-align:center"><form action="ConcertDetailsSelection.jsp"><input type=submit value="Details"></form></td>
-				  	<td style="text-align:center">Drake</td>
-				  	<td style="text-align:center">4</td>
-				  	<td style="text-align:center">Pinnacle Bank Arena</td>
-				    <td style="text-align:center">9:00pm</td>
-				    <td style="text-align:center">$650.00</td>	    
-			    </tr>
+				<c:forEach items="${concerts}" var="concert">
+			        <tr>
+			        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$cpt.c.id}">View Concert Details</button></form></td>
+		            	<td><c:out value="${cpt.c.getDescription()}" />${cpt.c.getDescription()}</td>
+			            <td><c:out value="${cpt.p.StartTime}"/>${cpt.p.StartTime}</td>
+			            <td><c:out value="${cpt.t.price}"/>${cpt.t.price}</td>
+			            <td><c:out value="${cpt.p.remainingSeats}"/>${concert.performance.remainingSeats}</td>
+			            <td><c:out value="${cpt.c.Thumbnail}"/>NO IMAGE ${concert.image}</td>
+			            <td style="text-align:center"><form action=UpdateShoppingCart><button name="deleteConcert" type=submit value=1>Remove</button></form></td>
+			        </tr>
+		    	</c:forEach>
 			    <tr>
 			    	<td style="text-align:center"></td>
 				  	<td style="text-align:center"></td>

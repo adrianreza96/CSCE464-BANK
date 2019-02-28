@@ -60,11 +60,11 @@
 						    <option value=9>9</option>
 					  	</select>
 					  	<select name="ticketType">
-							<c:forEach items ="${ticketTypes}" var="ticketType">
-								<option value="${cpt.t.price}"> Free Standing</option>
-							</c:forEach>
+								<option value="${cpt.t.getTicketPrice()}"> Free Standing</option>
 						</select>
-						<button name="selectedConcert"type=submit value="${concert.id }">Add to Cart</button>
+						<form action=VenueAndConcertSearchQuery name="search">
+							<button name="selectedConcert" type=submit value="${cpt.p.getId() }">Add to Cart</button>
+						</form>
 					</form>
 				</td>
 			</tr>
@@ -72,21 +72,23 @@
 		
 		
 		<h1 style="text-align:center">Details</h1>
-		<h2 style="text-align:center" name="concertName">${cpt.c.ConcertName}</h2>
-		<table>
-	        <tr>
-	            <td><c:out style="text-align:center" value="${cpt.c.getDescription()}" /></td>
-	            <td><c:out style="text-align:center" value="${cpt.c.getThumbnail()}" />NO IMAGE</td>
-	            <td><c:out style="text-align:center" value="${cpt.v.Name}"/></td>
-	            <td><c:out style="text-align:center" value="${cpt.p.StartTime}"/></td>
-	            <td><c:out style="text-align:center" value="${cpt.t.price}"/></td>
-	            <td><c:out style="text-align:center" value="${cpt.remainingSeats}"/></td>
+		<h2 style="text-align:center" name="concertName">${cpt.c.getConcertName()}</h2>
+		<table style="text-align:center">
+	        <tr style="text-align:center">
+	            <tr><c:out style="text-align:center" value="${cpt.c.getDescription()}" />${cpt.c.getDescription()}</td><br>
+	            <tr><c:out style="text-align:center" value="${cpt.c.getThumbnail()}" />${cpt.c.getThumbnail()}</td><br>
+	            <tr><c:out style="text-align:center" value="${cpt.v.getName()}"/>${cpt.v.getName()}</td><br>
+	            <tr><c:out style="text-align:center" value="${cpt.p.getStartTime()}"/>Date/Time : ${cpt.p.getStartTime()}</td><br>
+	            <tr><c:out style="text-align:center" value="${cpt.t.getTicketPrice()}"/>Tickets : $ ${cpt.t.getTicketPrice()}</td><br>
+	            <tr><c:out style="text-align:center" value="${cpt.p.getRemainingSeats()}"/>Remaining Seats : ${cpt.p.getRemainingSeats()}</td><br>
 	        </tr>
 		</table>
 		
 		
 		<h3>Reviews for Pinnacle Bank Arena</h3>
-		<form action="CustomerReview.jsp"><input type=submit value="Submit"></form>
+		<form action="CustomerReview.jsp">
+		<input type=submit value="Submit">
+		</form>
 		<span class="heading">User Rating</span>
 		<h3>${concert.rating} / 5</h3>
 		
@@ -100,14 +102,13 @@
 				<th>Rating</th>
 				<th>Review</th>
 			</tr>
-			<c:forEach items="${concerts}" var="concert">
-				<tr>
-		            <td><c:out style="text-align:center" />"${review.user.FirstName}"</td>
-		            <td><c:out style="text-align:center"  />"${review.reviewDate}"</td>
-		            <td><c:out style="text-align:center" />"${review.rating}"</td>
-		            <td><c:out style="text-align:center" />"${review.review}"</td>
-		        </tr>
-	        </c:forEach>
+			<tr>
+	            <td><c:out style="text-align:center" />${review.user.FirstName}</td>
+	            <td><c:out style="text-align:center"  />${review.reviewDate}</td>
+	            <td><c:out style="text-align:center" />${review.rating}</td>
+	            <td><c:out style="text-align:center" />${review.review}</td>
+	        </tr>
+
 		</table>
 	
 	</body>

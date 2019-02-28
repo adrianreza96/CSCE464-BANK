@@ -204,7 +204,7 @@ public class DBAccess {
 	
 	public Venue getVenueByID(int id) {
 		Venue v  = new Venue();
-		String SQL = "SELECT * from venue WHERE performanceID='"+id+"'";
+		String SQL = "SELECT * from venue WHERE Id='"+id+"'";
 	    Statement stat;
 		try {
 			stat = conn.createStatement();

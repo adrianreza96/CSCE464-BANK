@@ -36,14 +36,26 @@ public class UpdateShoppingCart extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UpdateShoppingCart");
-		if(!request.getParameter("selectedConcert").isEmpty()) {
+		HttpSession session = request.getSession();
+		List<List<ShoppingCart>> previousCartItems = (ArrayList<List<ShoppingCart>>)session.getAttribute("cart");
+
+		
+		if(!(request.getParameter("selectedConcert") == null)) {
 			addToCart(request);
 		}else if (!request.getParameter("deleteConcert").isEmpty()) {
 			deleteFromCart(request);
 		}
-		loadConcerts(request); //load concerts variable to be used on front end
-		dispatcher.forward(request, response);
+		
+		if(previousCartItems != null ) {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/UpdateShoppingCart");
+			loadConcerts(request); //load concerts variable to be used on front end
+			dispatcher.forward(request, response);
+		}else {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CustomerHomePage.jsp");
+			dispatcher.forward(request, response);
+		}
+		
+
 	}
 
 	/**
@@ -72,14 +84,20 @@ public class UpdateShoppingCart extends HttpServlet {
 		HttpSession session = request.getSession();
 		List<List<String>> previousCartItems = (ArrayList<List<String>>)session.getAttribute("cart");
 		String selectedConcert = request.getParameter("concertID");
-
-		for(int i = 0 ; i< previousCartItems.size();i++) {
-			if(previousCartItems.get(i).contains(selectedConcert)) {
-				previousCartItems.remove(i);
+		
+		if(previousCartItems != null) {
+			for(int i = 0 ; i< previousCartItems.size();i++) {
+				if(previousCartItems.get(i).contains(selectedConcert)) {
+					previousCartItems.remove(i);
+				}
 			}
+			session.setAttribute("cart", previousCartItems);
+			
+		}else {
+			System.out.println("Empty Cart, cant delete");
 		}
-		session.setAttribute("cart", previousCartItems);
-	}
+		
+		}
 	
 	private void addToCart(HttpServletRequest request)
 			throws ServletException, IOException {

@@ -35,20 +35,22 @@ public class ConcertSearchResult extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        CPTValuesDB cptDB = new CPTValuesDB();
-//        List<CPTValues> cpt = new ArrayList<CPTValues>();
-//        ReviewDB reviewDB = new ReviewDB();
-//        Review review = new Review();
-//        
-//		int performanceID = Integer.parseInt(request.getParameter("concertID"));
-//		cpt.add(cptDB.getCPTData(performanceID));
-//		
-//		review = reviewDB.getReview(cpt.get(0).getC().getId());
-//		
-//		
-//		request.setAttribute("cpt", cpt);
-//		request.setAttribute("review", review);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ConcertDetailsSelection");
+        CPTValuesDB cptDB = new CPTValuesDB();
+        CPTValues cpt = new CPTValues();
+        List<CPTValues> temp = new ArrayList<CPTValues>();
+        ReviewDB reviewDB = new ReviewDB();
+        Review review = new Review();
+        
+        
+		int performanceID = Integer.parseInt(request.getParameter("concertID"));
+		cpt =cptDB.getCPTData(performanceID);
+		
+		review = reviewDB.getReview(cpt.getC().getId());
+
+		
+		request.setAttribute("cpt", cpt);
+		request.setAttribute("review", review);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ConcertDetailsSelection.jsp");
 		dispatcher.forward(request, response);
 	}
 

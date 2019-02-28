@@ -4,6 +4,10 @@ input[type=submit] {
     width: 20em;  height: 2em;
     background-color: cornsilk;
 }
+button[type=submit] {
+    width: 20em;  height: 2em;
+    background-color: cornsilk;
+}
 * {
  	font-family: Arial;
 } 
