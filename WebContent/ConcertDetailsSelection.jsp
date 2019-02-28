@@ -61,7 +61,7 @@
 					  	</select>
 					  	<select name="ticketType">
 							<c:forEach items ="${ticketTypes}" var="ticketType">
-								<option value="${ticketType.id}">${ticketType.name} Free Standing</option>
+								<option value="${cpt.t.price}"> Free Standing</option>
 							</c:forEach>
 						</select>
 						<button name="selectedConcert"type=submit value="${concert.id }">Add to Cart</button>
@@ -72,15 +72,15 @@
 		
 		
 		<h1 style="text-align:center">Details</h1>
-		<h2 style="text-align:center" name="concertName">${concert.name}</h2>
+		<h2 style="text-align:center" name="concertName">${cpt.c.ConcertName}</h2>
 		<table>
 	        <tr>
-	            <td><c:out style="text-align:center" value="${concert.details}" /></td>
-	            <td><c:out style="text-align:center" value="${concert.image}" />NO IMAGE</td>
-	            <td><c:out style="text-align:center" value="${concert.venue}"/></td>
-	            <td><c:out style="text-align:center" value="${concert.startTime}"/></td>
-	            <td><c:out style="text-align:center" value="${concert.price}"/></td>
-	            <td><c:out style="text-align:center" value="${concert.remainingSeats}"/></td>
+	            <td><c:out style="text-align:center" value="${cpt.c.getDescription()}" /></td>
+	            <td><c:out style="text-align:center" value="${cpt.c.getThumbnail()}" />NO IMAGE</td>
+	            <td><c:out style="text-align:center" value="${cpt.v.Name}"/></td>
+	            <td><c:out style="text-align:center" value="${cpt.p.StartTime}"/></td>
+	            <td><c:out style="text-align:center" value="${cpt.t.price}"/></td>
+	            <td><c:out style="text-align:center" value="${cpt.remainingSeats}"/></td>
 	        </tr>
 		</table>
 		
@@ -102,10 +102,10 @@
 			</tr>
 			<c:forEach items="${concerts}" var="concert">
 				<tr>
-		            <td><c:out style="text-align:center" value="${review.user.firstName}" /></td>
-		            <td><c:out style="text-align:center" value="${review.reviewDate}" /></td>
-		            <td><c:out style="text-align:center" value="${review.rating}"/></td>
-		            <td><c:out style="text-align:center" value="${review.review}"/></td>
+		            <td><c:out style="text-align:center" />"${review.user.FirstName}"</td>
+		            <td><c:out style="text-align:center"  />"${review.reviewDate}"</td>
+		            <td><c:out style="text-align:center" />"${review.rating}"</td>
+		            <td><c:out style="text-align:center" />"${review.review}"</td>
 		        </tr>
 	        </c:forEach>
 		</table>

@@ -2,8 +2,10 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.CPTValues;
+import model.CPTValuesDB;
 import model.Concerts;
 import model.Performance;
 import model.PerformanceDB;
@@ -38,28 +42,25 @@ public class VenueAndConcertSearchQuery extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        CPTValuesDB cptDB = new CPTValuesDB();
+        List<CPTValues> cpt = new ArrayList<CPTValues>();
+		PerformanceDB perf = new PerformanceDB();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		
 		String venue = request.getParameter("venue");
 		String date = request.getParameter("datepicker");
-		System.out.println(request.getParameter("venueList"));
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        java.sql.Date parsed = null;
-		try {
-			parsed = (Date) format.parse(date);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        java.sql.Date sql = new java.sql.Date(parsed.getTime());
-//		List<Performance> p = PerformanceDB.getPerformance(sql);
-		List<Venue> v = VenueDB.getVenue(venue, sql);
-//        List<Concerts> c = ConcertsDB.getAllConcerts();
-	    
-//		System.out.println(p);
-		System.out.println(v);
+		System.out.println(venue);
+
+		System.out.println(date);
+
+        List<Performance> perfList = PerformanceDB.getPerformancebyDate(date, Integer.parseInt(venue));
+        for(int i = 0 ; i<perfList.size(); i++) {
+        	cpt.add(cptDB.getCPTData(perfList.get(i).getId()));
+        }
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ConcertSearchResults.jsp");
-//		request.setAttribute("concerts", c);
-		
+		request.setAttribute("cpt", cpt);
+		dispatcher.forward(request, response);
 	}
 
 	/**

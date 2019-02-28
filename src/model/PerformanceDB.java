@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 public class PerformanceDB {
-	public static List<Performance> getPerformancebyDate(Date d, int vID){
+	public static List<Performance> getPerformancebyDate(String d, int vID){
 		DBAccess db = new DBAccess();
 		db.connectMeIn();
 		List<Performance> c = db.getPerformancebyDateandVenue(d, vID);

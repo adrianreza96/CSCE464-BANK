@@ -60,9 +60,30 @@ public class DBAccess {
 		return result;
 	}
 	
+	public Review getReview(int concertID) {
+		Review r  = new Review();
+		String SQL = "SELECT * from customerreviews WHERE Id='"+concertID+"'";
+	    Statement stat;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			r.setConcertID(Integer.parseInt(rs.getString("concertID")));
+			r.setRating(Integer.parseInt(rs.getString("Rating")));
+			r.setUserID(Integer.parseInt(rs.getString("userID")));
+			r.setReviewDate(rs.getString("ReviewDate"));
+			r.setReview(rs.getString("PostalCode"));
+			r.setUser(this.getUserByID(r.getUserID()));
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return r;
+	}
+	
 	
 	// <---------------Performances------------------>
-	public List<Performance> getPerformancebyDateandVenue(Date d, int vID) {
+	public List<Performance> getPerformancebyDateandVenue(String d, int vID) {
 		List<Performance> p  = new ArrayList<Performance>();
 		String SQL = "SELECT * from performance WHERE StartTime>'"+d+"' and venueID='" + vID +"'";
 	    Statement stat;
@@ -172,6 +193,28 @@ public class DBAccess {
 				v.add(VenueHolder);
 		    }
 			
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return v;
+		
+	}
+	
+	public Venue getVenueByID(int id) {
+		Venue v  = new Venue();
+		String SQL = "SELECT * from venue WHERE performanceID='"+id+"'";
+	    Statement stat;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			v.setName(rs.getString("Name"));
+			v.setAddress(rs.getString("Address"));
+			v.setCity(rs.getString("City"));
+			v.setState(rs.getString("State"));
+			v.setPostalCode(rs.getString("PostalCode"));
+
 		    stat.close();
 		        
 		} catch (SQLException e) {
@@ -533,6 +576,31 @@ public class DBAccess {
 			e.printStackTrace();
 		}
 		return cId;
+	}
+	
+	public Users getUserByID(int userID) {
+		String SQL = "SELECT * from users where Id='"+userID+"'";
+	    Statement stat;
+	    Users user = new Users();
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+			user.setFirstName(rs.getString("FirstName"));
+			user.setLastName(rs.getString("LastName"));
+			user.setAddress(rs.getString("Address"));
+			user.setBirthday(rs.getString("Birthday"));
+			user.setCity(rs.getString("City"));
+			user.setPassword(rs.getString("Password"));
+			user.setPhoneNumber(rs.getString("PhoneNumber"));
+			user.setUserName(rs.getString("Username"));
+		    user.setState(rs.getString("State"));
+		    user.setPostalCode(rs.getString("PostalCode"));
+			stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 	
 	public String getUsersName(String username) {

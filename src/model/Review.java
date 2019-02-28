@@ -2,6 +2,7 @@ package model;
 
 public class Review {
 	int concertID;
+	Users user;
 	int userID;
 	String reviewDate;
 	int rating;
@@ -51,4 +52,11 @@ public class Review {
 		this.review = review;
 	}
 	
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
+		this.user = user;
+	}
 }

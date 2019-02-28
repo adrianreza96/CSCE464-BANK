@@ -27,7 +27,7 @@
 			    <th></th>
 		  	</tr>
 		  	<tr>
-		  		<td style="text-align:center"><form action="ConcertDetailsSelection.jsp"><button name="detailsButton" type=submit value="${$concert}"></form></td>
+		  		<td style="text-align:center"><form action=ConcertSearchResult ><button name="concertID" type=submit value=1>View Concert Details</button></form></td>
 			    <td style="text-align:center">The Bourbon Theater</td>
 			    <td style="text-align:center">7:00pm March 12th, 2019</td> 
 			    <td style="text-align:center">14</td>
@@ -36,16 +36,15 @@
 			    <td style="text-align:center"><img src="Pics/NF.jpeg" alt="" border=3 height=100 width=100></img></td>
 
 		    </tr>
-
-		    <c:forEach items="${concerts}" var="concert">
+			<h2>${cpt.get(0).c.getConcertName()} here</h2>
+		    <c:forEach items="${cpt}" var="concert">
 		        <tr>
-		        	<td style="text-align:center"><form action=ConcertSearchResult><button name="detailsButton" type=submit value="${$concert.performance.id}">View Concert Details</button></form></td>
-		            <td><c:out value="${concert.ConcertName}" /></td>
-		            <td><c:out value="${concert.performance.venue.name}" /></td>
-		            <td><c:out value="${concert.performance.startTime}"/></td>
-		            <td><c:out value="${concert.performance.ticketVenuePrices.TicketPrice}"/></td>
-		            <td><c:out value="${concert.performance.remainingSeats}"/></td>
-		            <td><c:out value="${concert.image}"/>NO IMAGE</td>
+		        	<td style="text-align:center"><form action=ConcertSearchResult ><button name="detailsButton" type=submit value="${concert.p.id}">View Concert Details</button></form></td>
+		            <td><c:out />${concert.c.ConcertName} </td>
+		            <td><c:out />${concert.p.startTime}</td>
+		            <td><c:out />${concert.t.TicketPrice}</td>
+		            <td><c:out />${concert.p.remainingSeats}</td>
+		            <td><c:out />NO IMAGE</td>
 		        </tr>
 		    </c:forEach>
 

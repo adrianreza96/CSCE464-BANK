@@ -6,7 +6,16 @@ public class CPTValues {
 	private Performance p;
 	private Concerts c;
 	private TicketVenuePrices t;
+	private Venue v;
 	
+	public Venue getV() {
+		return v;
+	}
+
+	public void setV(Venue v) {
+		this.v = v;
+	}
+
 	public CPTValues() {
 		super();
 	}

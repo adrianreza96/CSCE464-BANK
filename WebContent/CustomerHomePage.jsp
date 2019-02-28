@@ -17,14 +17,15 @@
 		
 		<h1 style="text-align:center">Customer Home Page</h1>
 		
-		<form style="text-align:center" action="ConcertSearchResults.jsp" name="search">
+		<form style="text-align:center" action=VenueAndConcertSearchQuery name="search">
 			Select a Venue :
 			<select name="venue">
 				<c:forEach items ="${venueList}" var="venue">
 					<option value="${venue.name}">${venue.name}</option>
+					<option value=1>Bourbon Theater</option>
 				</c:forEach>
 			</select>
-			<p>Date: <input type="date"  placeholder="Enter Date (yyyy-mm-dd)" id="datepicker" value="2019-02-21" min="2019-02-01" max="2019-12-31"></p>
+			<p>Date: <input type="date"  placeholder="Enter Date (yyyy-mm-dd)" name="datepicker" value="2019-02-21" min="2019-02-01" max="2019-12-31"></p>
 			<input type=submit value="Search">
 		</form>
 		

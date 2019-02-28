@@ -15,4 +15,11 @@ public class ReviewDB {
 		db.closeConnection();
 		return result;
 	}
+	public static Review getReview(int concertID) {
+		DBAccess db = new DBAccess();
+		db.connectMeIn();
+		Review result = db.getReview(concertID);
+		db.closeConnection();
+		return result;
+	}
 }
