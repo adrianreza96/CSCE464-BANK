@@ -9,20 +9,22 @@
 	function makeTable(){
 		var orders = session.getAttribute("orders");
 		var r = 0;
+		var table = document.getElementById('orderTable');
 		foreach (order in orders) {
-		    var x = document.getElementById('insertfirsttable').insertRow(r);
+		    var x = document.getElementById('orderTable').insertRow(r);
 		    for (var c = 0; c < 4; c += 1) {
 		      var y = x.insertCell(c);
 		    }
-		    table.rows[r].cells[0].innerHTML = order.;
-		    table.rows[r].cells[1].innerHTML = filling1;
-		    table.rows[r].cells[2].innerHTML = filling2;
-		    table.rows[r].cells[3].innerHTML = filling3;
+		    table.rows[r].cells[0].innerHTML = 0;
+		    table.rows[r].cells[1].innerHTML = order[r].Id;
+		    table.rows[r].cells[2].innerHTML = order[r].TotalCost;
+		    table.rows[r].cells[3].innerHTML = order[r].OrderDate;
 		    r+=1;
 		}
 		
 	}
 </script>
+<!-- <form action="ManageOrder.jsp"><input type=submit value="View"></form> -->
 </head>
 	<body>
 		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">
