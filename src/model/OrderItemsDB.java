@@ -10,4 +10,11 @@ public class OrderItemsDB {
 		db.closeConnection();
 		return o;
 	}
+	
+	public static void delOrderItem(int oID){
+		DBAccess db = new DBAccess();
+		db.connectMeIn();
+		db.delOrderItem(oID);
+		db.closeConnection();
+	}
 }

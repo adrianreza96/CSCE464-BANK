@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Search Results</title>
+<sciprt
 </head>
 	<body>
 		<link rel="stylesheet" type="text/css" href="NavigationBarTheme.css">

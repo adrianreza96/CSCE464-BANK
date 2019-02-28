@@ -29,18 +29,7 @@
 			    <td style="text-align:center">$1010</td>
 			    <td style="text-align:center">1/30/2019</td>  	
 		    </tr>
-		    <tr>
-		  		<td style="text-align:center"><form action="ManageOrder.jsp"><input type=submit value="View"></form></td>
-		  		<td style="text-align:center">10684</td>
-		  		<td style="text-align:center">$400</td>
-			    <td style="text-align:center">4/6/2018</td>   	
-		    </tr>
-		  	<tr>
-			  	<td style="text-align:center"><form action="ManageOrder.jsp"><input type=submit value="View"></form></td>
-			  	<td style="text-align:center">9456</td>
-			  	<td style="text-align:center">$60</td>
-			  	<td style="text-align:center">3/8/2018</td> 
-		    </tr>
+		    
 
 	  	</table>
 	</body>

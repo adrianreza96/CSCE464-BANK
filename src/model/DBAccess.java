@@ -125,13 +125,6 @@ public class DBAccess {
 			ResultSet rs = stat.executeQuery(SQL);
 			while (rs.next()){
 				cID = rs.getInt("concertID");
-				Venue VenueHolder = new Venue();
-				VenueHolder.setName(rs.getString("Name"));
-				VenueHolder.setAddress(rs.getString("Address"));
-				VenueHolder.setCity(rs.getString("City"));
-				VenueHolder.setState(rs.getString("State"));
-				VenueHolder.setPostalCode(rs.getString("PostalCode"));
-				v.add(VenueHolder);
 		    }
 			
 		    stat.close();
@@ -294,6 +287,20 @@ public class DBAccess {
 		
 	}
 	
+	
+	public void delOrder(int oID) {
+		String SQL = "DELETE from orders WHERE Id='"+oID+"'";
+	    Statement stat;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// <---------------OrderItems------------------>
 	public List<OrderItems> getOrderItemsbyOrderID(int cID) {
 		List<OrderItems>  o = new ArrayList<OrderItems>();
@@ -318,6 +325,19 @@ public class DBAccess {
 		}
 		return o;
 		
+	}
+	
+	public void delOrderItem(int oID) {
+		String SQL = "DELETE from orderitems WHERE Id='"+oID+"'";
+	    Statement stat;
+		try {
+			stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(SQL);
+		    stat.close();
+		        
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
