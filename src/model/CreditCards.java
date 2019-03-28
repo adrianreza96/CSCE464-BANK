@@ -5,11 +5,11 @@ import java.sql.Date;
 public class CreditCards {
 	private int Id;
 	private String CardHolderName;
-	private String CreditCardNumber;
+	private long CreditCardNumber;
 	private Double Balance;
 	private String CardType;
 	private int UserId;
-	private String CVV;
+	private int CVV;
 	private Date ExpirationDate;
 	
 	public CreditCards() {
@@ -28,10 +28,10 @@ public class CreditCards {
 	public void setCardHolderName(String cardHolderName) {
 		CardHolderName = cardHolderName;
 	}
-	public String getCreditCardNumber() {
+	public long getCreditCardNumber() {
 		return CreditCardNumber;
 	}
-	public void setCreditCardNumber(String creditCardNumber) {
+	public void setCreditCardNumber(long creditCardNumber) {
 		CreditCardNumber = creditCardNumber;
 	}
 	public Double getBalance() {
@@ -52,10 +52,10 @@ public class CreditCards {
 	public void setUserId(int userId) {
 		UserId = userId;
 	}
-	public String getCVV() {
+	public int getCVV() {
 		return CVV;
 	}
-	public void setCVV(String cVV) {
+	public void setCVV(int cVV) {
 		CVV = cVV;
 	}
 	public Date getExpirationDate() {
